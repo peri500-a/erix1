@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-assistant), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-rubik), sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-primary: #0f172a;
+  --color-primary-light: #1e293b;
+  --color-accent: #1d4ed8;
+  --color-accent-light: #3b82f6;
+  --color-secondary: #64748b;
+  --color-surface: #f8fafc;
+  --color-gold: #c5a059;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display leading-tight font-black;
+  }
+}
+
+.prestige-card {
+  @apply bg-white rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgb(0,0,0,0.08)] hover:-translate-y-1;
+}
+
+.luxury-text-gradient {
+  /* Using a vibrant blue instead of a slate-to-blue gradient to match the image better */
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-600;
+}
+
+.glass-header {
+  @apply bg-white/80 backdrop-blur-xl border-b border-white/20 shadow-sm;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slide-up 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 1.5s ease-out forwards;
+}
+
+.luxury-glow-effect {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.shiny-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shiny-effect::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.7s;
+  opacity: 0;
+}
+
+.shiny-effect:hover::after {
+  left: 100%;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .group:hover .logo-svg {
+    filter: contrast(1.1) brightness(1.1);
+  }
+}
+
+/* Performance optimization for off-screen sections removed for debugging */
+section {
+  /* content-visibility: auto; */
+}
+
+/* Hero section should always be visible immediately */
+section:first-of-type {
+  /* content-visibility: visible; */
+}
+
+.glass-morphism {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400;
+}
+
+/* Custom scrollbar - High visibility and accessibility for easy dragging */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f5f9; /* Slate 100 - clean light background */
+  border-left: 1px solid #e2e8f0; /* Subtly separates scrollbar from content */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #94a3b8; /* Slate 400 - highly visible thumb */
+  border-radius: 9999px; /* Rounded pill style */
+  border: 3px solid #f1f5f9; /* Creates a beautiful inner padding effect */
+  transition: background-color 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2563eb; /* Active blue on hover for high-contrast interactivity */
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #1d4ed8; /* Darker blue when clicked/dragged */
+}

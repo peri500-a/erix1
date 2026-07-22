@@ -1,0 +1,8 @@
+{
+  "name": "אריקס ביקורת מבנים - בדק בית וייעוץ הנדסי",
+  "description": "חברת הנדסה מובילה המתמחה בבדק בית, ביקורת מבנים, ייעוץ הנדסי וחוות דעת מומחה לבית המשפט.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
