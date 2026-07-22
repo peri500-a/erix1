@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  allowedDevOrigins: [
+    'localhost:3000',
+    '*.europe-west2.run.app',
+    '*.run.app'
+  ],
   output: 'export',
   eslint: {
     ignoreDuringBuilds: true,
