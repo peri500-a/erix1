@@ -81,12 +81,11 @@ const Services: React.FC = () => {
     {
       title: 'איתור ליקויי בנייה הנדסיים מורכבים',
       description: 'אבחון ומיפוי ליקויי בנייה מורכבים ע"י מהנדס מוסמך. אנו מאתרים סדקים מבניים, כשלי איטום ובעיות בטיחות ומספקים דו"ח הנדסי מחייב הקביל בבית משפט.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/f_auto,q_auto,e_brightness:80,e_contrast:10/v1782731603/pic333_gjc0li.jpg",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1784833432/%D7%9C%D7%99%D7%A7%D7%95%D7%99%D7%99_%D7%91%D7%A0%D7%99%D7%94_%D7%9E%D7%95%D7%A8%D7%9B%D7%91%D7%99%D7%9D_lbagyb.jpg",
       imageAlt: 'מהנדס מוסמך בביצוע איתור ליקויי בנייה הנדסיים וביקורת מבנים',
       standard: 'ת"י 1920',
       icon: <Eye className="w-6 h-6" />,
       href: '#knowledge',
-      imageStyle: { filter: 'brightness(1.4) contrast(1.05)' }
     },
     {
       title: 'חוות דעת הנדסית לבית משפט',
