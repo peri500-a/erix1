@@ -99,12 +99,11 @@ const Services: React.FC = () => {
     {
       title: 'ביקורת דירה יד שנייה לפני קנייה',
       description: 'בדיקת דירה מקיפה לחשיפת ליקויים סמויים, רטיבות ובעיות שלד. דו"ח המהנדס מעניק לכם כוח מיקוח משמעותי במשא ומתן על מחיר הדירה.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/f_auto,q_auto,e_brightness:80,e_contrast:10/v1782730883/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_11_b6nrtu.jpg",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1784833432/%D7%91%D7%99%D7%A7%D7%95%D7%A8%D7%AA_%D7%93%D7%99%D7%A8%D7%94_%D7%99%D7%93_%D7%A9%D7%A0%D7%99%D7%94_a0ru0t.jpg",
       imageAlt: 'בדק בית לדירת יד שנייה לפני חתימה על חוזה מכר',
       standard: 'ת"י 1205',
       icon: <ClipboardCheck className="w-6 h-6" />,
       href: '/בדק-בית-יד-שנייה',
-      imageStyle: { filter: 'brightness(1.4) contrast(1.05)' }
     },
     {
       title: 'בדק בית לבתים פרטיים',
