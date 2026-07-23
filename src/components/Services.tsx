@@ -117,7 +117,7 @@ const Services: React.FC = () => {
     {
       title: 'איתור נזילות ורטיבות תרמי',
       description: 'אבחון מדויק במצלמה תרמית, מול קבלנים ושכנים.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/f_auto,q_auto,w_600/v1769635012/%D7%90%D7%99%D7%AA%D7%95%D7%A8_%D7%A8%D7%98%D7%99%D7%91%D7%95%D7%99%D7%95%D7%AA_irxrhe.jpg",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1784833432/%D7%90%D7%99%D7%AA%D7%95%D7%A8_%D7%A0%D7%96%D7%99%D7%9C%D7%95%D7%AA1_fwqp2n.jpg",
       imageAlt: 'איתור נזילות במצלמה תרמית',
       standard: 'ISO 6781',
       icon: <Thermometer className="w-6 h-6" />,
