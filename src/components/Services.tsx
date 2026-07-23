@@ -90,12 +90,11 @@ const Services: React.FC = () => {
     {
       title: 'חוות דעת הנדסית לבית משפט',
       description: 'כתיבת חוות דעת הנדסית מקיפה ומקצועית הקבילה בערכאות משפטיות. הדו"ח נערך ע"י מהנדס מומחה ומנוסה ומספק לכם גיבוי משפטי חזק, ליווי מלא ומתן עדות מומחה בבית המשפט בגין ליקויי בנייה.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/f_auto,q_auto,e_brightness:80,e_contrast:10/v1782731148/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_22_ezx6yn.jpg",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1784833432/%D7%97%D7%95%D7%95%D7%AA_%D7%93%D7%A2%D7%AA_%D7%94%D7%A0%D7%93%D7%A1%D7%99%D7%AA_%D7%9C%D7%91%D7%99%D7%AA_%D7%9E%D7%A9%D7%A4%D7%981_dqanjt.jpg",
       imageAlt: 'חוות דעת הנדסית לבית משפט - מהנדס בניין מומחה',
       standard: 'הנדסה',
       icon: <Scale className="w-6 h-6" />,
       href: '/חוות-דעת-הנדסית-לבית-משפט',
-      imageStyle: { filter: 'brightness(1.4) contrast(1.05)' }
     },
     {
       title: 'ביקורת דירה יד שנייה לפני קנייה',
