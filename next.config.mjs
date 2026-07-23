@@ -5,7 +5,7 @@ const nextConfig = {
     '*.europe-west2.run.app',
     '*.run.app'
   ],
-  output: 'export',
+  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
   eslint: {
     ignoreDuringBuilds: true,
   },
