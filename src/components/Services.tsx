@@ -108,7 +108,7 @@ const Services: React.FC = () => {
     {
       title: 'בדק בית לבתים פרטיים',
       description: 'ביקורת מקיפה לצמודי קרקע, גגות רעפים ותשתיות חוץ.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/f_auto,q_auto,w_600/v1770018097/%D7%95%D7%99%D7%9C%D7%94_%D7%99%D7%95%D7%A7%D7%A8%D7%AA%D7%99%D7%AA_%D7%91%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94_%D7%A4%D7%99%D7%AA%D7%95%D7%97_coh01x.jpg",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1784833432/%D7%91%D7%93%D7%A7_%D7%91%D7%99%D7%AA_%D7%9C%D7%91%D7%AA%D7%99%D7%9D_%D7%A4%D7%A8%D7%98%D7%99%D7%99%D7%9D_p7wshq.jpg",
       imageAlt: 'בדק בית לוילות ובתים פרטיים',
       standard: 'ת"י 1004',
       icon: <Home className="w-6 h-6" />,
