@@ -175,18 +175,18 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Left Side: Clean, High-Impact Hero Photo */}
-          <div className="lg:col-span-5 relative px-4 lg:px-0 flex justify-center lg:justify-end lg:-mr-24 xl:-mr-36 z-10">
+          <div className="lg:col-span-5 relative px-4 lg:px-0 flex justify-center lg:justify-end lg:-mr-28 xl:-mr-40 z-10">
             <motion.div 
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="relative w-full max-w-[500px] lg:max-w-[636px]"
+              className="relative w-full max-w-[550px] lg:max-w-[700px]"
             >
               {/* Outer decorative card shadow blur */}
               <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-600/20 to-slate-900/10 rounded-[2.5rem] blur opacity-45"></div>
               
               {/* Main Image Frame */}
-              <div className="relative rounded-[2.5rem] border-[12px] border-white shadow-2xl overflow-hidden aspect-[24/25] bg-white">
+              <div className="relative rounded-[2.5rem] border-[12px] border-white shadow-2xl overflow-hidden aspect-[132/125] bg-white">
                 <Image 
                   src="https://res.cloudinary.com/dbzklnlcx/image/upload/v1784734874/main-photo_ycy6j8.jpg" 
                   alt="בדק בית מקצועי אריקס ביקורת מבנים" 
