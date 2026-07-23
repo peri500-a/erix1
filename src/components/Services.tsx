@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Eye, Gavel, ClipboardCheck, Home, Thermometer, Ruler } from 'lucide-react';
+import { Eye, Scale, ClipboardCheck, Home, Thermometer, Ruler } from 'lucide-react';
 
 const ServiceCard: React.FC<{ 
   title: string; 
@@ -94,7 +94,7 @@ const Services: React.FC = () => {
       imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/f_auto,q_auto,e_brightness:80,e_contrast:10/v1782731148/%D7%AA%D7%9E%D7%95%D7%A0%D7%94_22_ezx6yn.jpg",
       imageAlt: 'חוות דעת הנדסית לבית משפט - מהנדס בניין מומחה',
       standard: 'הנדסה',
-      icon: <Gavel className="w-6 h-6" />,
+      icon: <Scale className="w-6 h-6" />,
       href: '/חוות-דעת-הנדסית-לבית-משפט',
       imageStyle: { filter: 'brightness(1.4) contrast(1.05)' }
     },

@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Phone, MessageSquare, ArrowLeft, CheckCircle, Sparkles, FileText } from 'lucide-react';
+import { ArrowLeft, CheckCircle, FileText } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [phone, setPhone] = React.useState('');
@@ -71,25 +71,27 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-6 relative z-10 w-full max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Right Side: Main Text & High-Converting Actions */}
+          {/* Right Side: Main Text & Consolidated High-Converting Action */}
           <div className="lg:col-span-7 space-y-6 text-right relative z-20">
-            {/* Front-loaded Trust Badges */}
+            {/* Unified Front-loaded Trust Strip */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
-              <span className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs font-black border border-blue-100">
-                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full animate-pulse"></span>
+              <span className="inline-flex items-center gap-1.5 bg-slate-100 text-slate-800 px-3.5 py-1.5 rounded-full text-xs font-bold border border-slate-200/80 shadow-xs">
+                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
                 אינג׳ יוסי פרי - מהנדס רשוי
               </span>
-              <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-full text-xs font-black border border-emerald-100">
-                ✓ מעל 30 שנות ניסיון
+              <span className="inline-flex items-center gap-1.5 bg-slate-100 text-slate-800 px-3.5 py-1.5 rounded-full text-xs font-bold border border-slate-200/80 shadow-xs">
+                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
+                מעל 30 שנות ניסיון
               </span>
-              <span className="inline-flex items-center gap-1.5 bg-slate-50 text-slate-700 px-3 py-1.5 rounded-full text-xs font-black border border-slate-200">
-                ⚖️ דוח קביל בבית משפט
+              <span className="inline-flex items-center gap-1.5 bg-slate-100 text-slate-800 px-3.5 py-1.5 rounded-full text-xs font-bold border border-slate-200/80 shadow-xs">
+                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
+                דוח קביל בבית משפט
               </span>
             </div>
 
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-[4rem] xl:text-[4.2rem] font-black text-slate-900 leading-[1.15] tracking-tight">
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-[3.8rem] xl:text-[4rem] font-black text-slate-900 leading-[1.15] tracking-tight">
               אריקס ביקורת מבנים: <br />
-              <span className="text-blue-600">בדק בית וביקורת הנדסית</span>
+              <span className="text-blue-600 font-black">בדק בית וביקורת הנדסית</span>
             </h1>
 
             <div className="text-slate-700 text-sm sm:text-base space-y-2 font-bold max-w-2xl leading-relaxed">
@@ -101,7 +103,7 @@ const Hero: React.FC = () => {
               </p>
             </div>
 
-            {/* Quick Conversion Widget (Zero Friction Form) */}
+            {/* Quick Conversion Widget (Primary Focused CTA) */}
             <div className="bg-white border border-blue-100/80 p-6 rounded-3xl shadow-xl max-w-xl relative">
               <div className="absolute -top-3 right-6 bg-blue-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
                 שיחת ייעוץ חינם ללא התחייבות
@@ -153,58 +155,26 @@ const Hero: React.FC = () => {
               )}
             </div>
 
-            {/* Actions Block - Clean & Minimalist */}
-            <div className="space-y-4 pt-1">
-              <div className="flex flex-col sm:flex-row flex-wrap gap-3 items-stretch sm:items-center">
-                {/* 1. Calculator Action */}
-                <button 
-                  onClick={() => document.getElementById('recommender')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-black rounded-xl shadow-sm transition-all active:scale-95 text-sm flex items-center justify-center gap-2 cursor-pointer group"
-                >
-                  התחילו בדיקה דיגיטלית מהירה
-                  <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                </button>
-
-                {/* 2. Direct Call Action */}
-                <a 
-                  href="tel:054-7515142"
-                  className="px-6 py-3 bg-blue-50 hover:bg-blue-100 text-blue-700 font-black rounded-xl transition-all active:scale-95 text-sm flex items-center justify-center gap-2 border border-blue-100"
-                >
-                  <Phone className="w-4 h-4" />
-                  שיחה ישירה ליוסי: 054-7515142
-                </a>
-
-                {/* 3. Sample Report Action */}
-                <Link 
-                  href="/sample-report"
-                  className="px-6 py-3 bg-white hover:bg-slate-50 text-slate-700 font-bold rounded-xl border border-slate-200 transition-all active:scale-95 text-sm flex items-center justify-center gap-2"
-                >
-                  <FileText className="w-4 h-4 text-slate-500" />
-                  דוח לדוגמא (PDF)
-                </Link>
-              </div>
-
-              {/* Minimalist inline mentions */}
-              <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 mr-1 font-bold">
-                <span className="flex items-center gap-1">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
-                  בדיקה יסודית ללא שום התחייבות
-                </span>
-                <span className="text-slate-300">|</span>
-                <a 
-                  href={`https://wa.me/972547515142?text=${encodeURIComponent('שלום לכם, נשמח אם תוכלו לחזור אלינו בקשר להצעת מחיר')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-emerald-700 hover:text-emerald-600 hover:underline flex items-center gap-1 transition-colors"
-                >
-                  <MessageSquare className="w-3.5 h-3.5 fill-emerald-600 text-white" />
-                  שלחו הודעה מהירה ב-WhatsApp
-                </a>
-              </div>
+            {/* Consolidated Secondary Actions */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <Link 
+                href="/sample-report"
+                className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl border border-slate-200/80 transition-all text-sm flex items-center gap-2"
+              >
+                <FileText className="w-4 h-4 text-blue-600" />
+                צפו בדוח לדוגמא (PDF)
+              </Link>
+              <button 
+                onClick={() => document.getElementById('recommender')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-5 py-2.5 bg-white hover:bg-slate-50 text-slate-700 font-bold rounded-xl border border-slate-200/80 transition-all text-sm flex items-center gap-2 cursor-pointer"
+              >
+                התחילו בדיקה דיגיטלית
+                <ArrowLeft className="w-4 h-4 text-slate-400" />
+              </button>
             </div>
           </div>
 
-          {/* Left Side: Gorgeous Interactive Visual Frame matching the image exactly */}
+          {/* Left Side: Clean, High-Impact Hero Photo */}
           <div className="lg:col-span-5 relative px-4 lg:px-0 flex justify-center lg:justify-end lg:-mr-24 xl:-mr-36 z-10">
             <motion.div 
               initial={{ opacity: 0, scale: 0.96 }}
@@ -227,41 +197,30 @@ const Hero: React.FC = () => {
                   {...({ fetchPriority: "high" } as any)}
                   referrerPolicy="no-referrer"
                 />
-                
-                {/* Bottom Overlay Frosted Glass Banner */}
-                <div className="absolute bottom-6 left-6 right-6 p-4 bg-slate-950/45 backdrop-blur-md rounded-2xl border border-white/10 flex items-center justify-between z-10 shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <span className="relative flex h-2.5 w-2.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                    </span>
-                    <span className="text-white text-xs font-black leading-none">זמין לקריאות</span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-[10px] text-slate-300 block font-black leading-none mb-1">דסק לקריאות</span>
-                    <span className="text-white text-sm font-black block">פריסה ארצית מלאה</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Top-Right Badge (+20 Years Experience) half-overlapping the border */}
-              <div className="absolute -top-5 -right-5 bg-white rounded-3xl py-4.5 px-6 shadow-xl border border-slate-100 flex flex-col items-center justify-center z-20 min-w-[105px] hover:scale-105 transition-transform">
-                <span className="text-3xl font-black text-blue-600 leading-none">+20</span>
-                <span className="text-[10px] font-extrabold text-slate-400 mt-2 text-center leading-tight">שנות <br />ניסיון</span>
-              </div>
-
-              {/* Bottom-Left Badge (Court-Certified Report) half-overlapping the border */}
-              <div className="absolute top-[60%] -left-6 bg-white rounded-3xl p-5 shadow-xl border border-slate-100 flex flex-col items-center justify-center z-20 max-w-[145px] text-center hover:scale-105 transition-transform">
-                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 mb-2">
-                  <svg className="w-5.5 h-5.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <span className="text-[11px] font-black text-slate-800 leading-tight">דוח הנדסי <br />קביל משפטית</span>
               </div>
             </motion.div>
           </div>
 
+        </div>
+
+        {/* Consolidated Trust & Stat Bar */}
+        <div className="mt-14 pt-8 border-t border-slate-200/60 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
+          <div className="p-4 bg-white/90 backdrop-blur-sm rounded-2xl border border-slate-200/60 shadow-xs">
+            <div className="text-2xl md:text-3xl font-black text-blue-600">+30</div>
+            <div className="text-xs md:text-sm font-bold text-slate-700 mt-1">שנות ניסיון הנדסי</div>
+          </div>
+          <div className="p-4 bg-white/90 backdrop-blur-sm rounded-2xl border border-slate-200/60 shadow-xs">
+            <div className="text-2xl md:text-3xl font-black text-blue-600">100%</div>
+            <div className="text-xs md:text-sm font-bold text-slate-700 mt-1">דוחות קבילים בבית משפט</div>
+          </div>
+          <div className="p-4 bg-white/90 backdrop-blur-sm rounded-2xl border border-slate-200/60 shadow-xs">
+            <div className="text-2xl md:text-3xl font-black text-blue-600">10,000+</div>
+            <div className="text-xs md:text-sm font-bold text-slate-700 mt-1">בדיקות נכסים מוצלחות</div>
+          </div>
+          <div className="p-4 bg-white/90 backdrop-blur-sm rounded-2xl border border-slate-200/60 shadow-xs">
+            <div className="text-2xl md:text-3xl font-black text-blue-600">פריסה ארצית</div>
+            <div className="text-xs md:text-sm font-bold text-slate-700 mt-1">מענה מהיר בכל הארץ</div>
+          </div>
         </div>
       </div>
     </section>
