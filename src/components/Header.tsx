@@ -20,6 +20,7 @@ const Header: React.FC = () => {
       isDropdown: true,
       items: [
         { href: '/מה-אנחנו-בודקים', label: 'מה אנחנו בודקים' },
+        { href: '/מאגר-הידע-ההנדסי', label: 'מאגר הידע ההנדסי' },
         { href: '/בדק-בית-מחיר', label: 'בדק בית מחיר' }
       ]
     },

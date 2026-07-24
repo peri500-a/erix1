@@ -74,6 +74,33 @@ const mainPageMapping: Record<string, () => React.ReactNode> = {
   'privacy-policy': () => <PrivacyPolicy />,
   'הצהרת-נגישות': () => <AccessibilityStatement />,
   'accessibility-statement': () => <AccessibilityStatement />,
+  'מאגר-הידע-ההנדסי': () => (
+    <div className="bg-white">
+      <div className="container mx-auto px-6 py-12">
+        <Breadcrumbs items={[{ label: 'ראשי', href: '/' }, { label: 'מאגר הידע ההנדסי' }]} />
+      </div>
+      <KnowledgeHub />
+      <CommonSections />
+    </div>
+  ),
+  'knowledge-hub': () => (
+    <div className="bg-white">
+      <div className="container mx-auto px-6 py-12">
+        <Breadcrumbs items={[{ label: 'ראשי', href: '/' }, { label: 'מאגר הידע ההנדסי' }]} />
+      </div>
+      <KnowledgeHub />
+      <CommonSections />
+    </div>
+  ),
+  'engineering-knowledge-hub': () => (
+    <div className="bg-white">
+      <div className="container mx-auto px-6 py-12">
+        <Breadcrumbs items={[{ label: 'ראשי', href: '/' }, { label: 'מאגר הידע ההנדסי' }]} />
+      </div>
+      <KnowledgeHub />
+      <CommonSections />
+    </div>
+  ),
   'אישור-מהנדס-לפרגולה': () => (
     <div className="bg-white">
       <div className="container mx-auto px-6 py-12">
@@ -281,6 +308,19 @@ const metadataMapping: Record<string, { title: string; description: string; keyw
   'accessibility-statement': {
     title: 'הצהרת נגישות | אריקס ביקורת מבנים',
     description: 'הצהרת הנגישות ודרכי הנגשת תוכן האתר לרווחת כלל קהל המשתמשים ואנשים עם מוגבלות.'
+  },
+  'מאגר-הידע-ההנדסי': {
+    title: 'מאגר הידע ההנדסי | מדריכים ומאמרים בבדק בית | אריקס ביקורת מבנים',
+    description: 'מאגר ידע הנדסי מקיף ומקצועי בנושאי בדק בית, ליקויי בנייה, איתור נזילות, תקנים הנדסיים וזכויות רוכשי דירות מאת מהנדסי אריקס ביקורת מבנים.',
+    keywords: ['מאגר הידע ההנדסי', 'מאמרים בדק בית', 'מדריך בדק בית', 'ליקויי בנייה מאמרים', 'תקני בנייה בישראל']
+  },
+  'knowledge-hub': {
+    title: 'מאגר הידע ההנדסי | מדריכים ומאמרים בבדק בית | אריקס ביקורת מבנים',
+    description: 'מאגר ידע הנדסי מקיף ומקצועי בנושאי בדק בית, ליקויי בנייה, איתור נזילות, תקנים הנדסיים וזכויות רוכשי דירות מאת מהנדסי אריקס ביקורת מבנים.',
+  },
+  'engineering-knowledge-hub': {
+    title: 'מאגר הידע ההנדסי | מדריכים ומאמרים בבדק בית | אריקס ביקורת מבנים',
+    description: 'מאגר ידע הנדסי מקיף ומקצועי בנושאי בדק בית, ליקויי בנייה, איתור נזילות, תקנים הנדסיים וזכויות רוכשי דירות מאת מהנדסי אריקס ביקורת מבנים.',
   },
   'ליקויי-בנייה': {
     title: 'איתור חריגות בנייה ובדיקת היתרים | אריקס ביקורת מבנים',

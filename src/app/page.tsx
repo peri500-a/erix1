@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Hero from "../components/Hero";
 import Services from "../components/Services";
 import WhyUs from "../components/WhyUs";
-import KnowledgeHub from "../components/KnowledgeHub";
 import CommonSections from "../components/CommonSections";
 
 export const metadata: Metadata = {
@@ -17,7 +16,6 @@ export default function Home() {
       <Hero />
       <Services />
       <WhyUs />
-      <KnowledgeHub />
       <CommonSections excludeWhyUs excludePergola isHomePage />
     </main>
   );

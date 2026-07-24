@@ -105,8 +105,8 @@ const Footer: React.FC = () => {
                 <span className="group-hover:translate-x-[-2px] transition-transform">מחירון בדק בית</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
               </Link>
-              <Link href="/#knowledge" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
-                <span className="group-hover:translate-x-[-2px] transition-transform">מרכז ידע הנדסי</span>
+              <Link href="/מאגר-הידע-ההנדסי" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
+                <span className="group-hover:translate-x-[-2px] transition-transform">מאגר הידע ההנדסי</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
               </Link>
               <Link href="/הצהרת-נגישות" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
