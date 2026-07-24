@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import Link from 'next/link';
+import { ChevronLeft } from 'lucide-react';
 import Breadcrumbs from './Breadcrumbs';
 import SchemaTags from './SchemaTags';
 import CommonSections from './CommonSections';
@@ -12,6 +14,7 @@ interface LocationPageProps {
 interface CityData {
   title: string;
   desc: string;
+  articleHeadline?: string;
   soilType: string;
   buildingStyle: string;
   article: string;
@@ -19,6 +22,7 @@ interface CityData {
   commonDefects: { title: string; desc: string }[];
   image: string;
   localStats: { label: string; value: string }[];
+  relatedServices?: { label: string; href: string }[];
 }
 
 const cityContent: Record<string, CityData> = {
@@ -43,22 +47,62 @@ const cityContent: Record<string, CityData> = {
     image: 'https://images.unsplash.com/photo-1544971587-b842c27f8e14?auto=format&fit=crop&w=1200&q=80'
   },
   'ירושלים': {
-    title: 'בדק בית בירושלים | ביקורת מבנים ואיתור ליקויי בנייה',
-    desc: 'בדק בית בירושלים: ביקורת הנדסית מותאמת לחיפויי אבן ירושלמית ואקלים הררי. אבחון ליקויי בנייה, בעיות בידוד תרמי ואיטום ע"י מהנדס מומחה מאריקס ביקורת מבנים.',
+    title: 'בדק בית בירושלים | מהנדס מוסמך - אריקס ביקורת מבנים',
+    desc: 'בדק בית בירושלים ע"י מהנדס מוסמך עם 30 שנות ניסיון. איתור ליקויי בנייה, רטיבות ובעיות איטום ייחודיות לבנייה הירושלמית. דוח הנדסי מפורט - קבלו ייעוץ חינם.',
+    articleHeadline: 'בדק בית בירושלים: מדריך מקצועי לרוכשי דירות בעיר הבירה',
     soilType: 'סלע גירני וקרקע הררית (יציבה מאוד אך מאתגרת ניקוז ובידוד)',
     buildingStyle: 'חיפוי אבן קשיח (תקן 2378), בנייה מדורגת במדרון',
-    article: `כשניגשים ל**בדק בית בירושלים**, האתגר המרכזי הוא הבידוד התרמי (תקן 1045). האקלים הירושלמי מחייב שימוש בלוחות בידוד עבים (קלקר או צמר סלעים) מאחורי האבן הירושלמית כדי למנוע "גשרי קור" הגורמים לעובש שחור בפינות החדרים. בנוסף, אנו בודקים את העיגון המכני של האבנים למניעת נשירה – ליקוי בטיחותי חמור הנפוץ בבנייה חדשה. בבנייה המדורגת (כמו ברמות או הר חומה), אנו בודקים את איטום המרפסות שיושבות מעל חללי מגורים.
+    article: `רוכשים דירה או בית בירושלים? העיר מציגה כמה מהאתגרים ההנדסיים המורכבים והייחודיים ביותר בשוק הנדל"ן הישראלי - משילוב בנייה מאבן ירושלמית מסורתית, דרך טופוגרפיה הררית התובעת פתרונות יסודות מיוחדים, ועד מבנים עתיקים המשולבים לצד פרויקטים חדשים. בדק בית מקצועי בירושלים אינו "עוד בדיקה שגרתית" - הוא כלי הכרחי להבנת המצב ההנדסי האמיתי של הנכס, לפני שאתם חותמים על העסקה המשמעותית בחייכם.
 
-המומחים שלנו באריקס ביקורת מבנים מספקים דוחות הנדסיים מפורטים הכוללים צילומים תרמיים ואומדן עלויות לתיקון הליקויים. אנו מלווים את לקוחותינו בירושלים מול הקבלנים כדי להבטיח שכל ליקויי בנייה יתוקנו לשביעות רצונם המלאה ובהתאם לתקנים הישראליים.`,
-    points: ['בדיקת עיגון אבן ירושלמית לפי תקן 2378', 'אבחון גשרי קור ועיבוי (קונדנסציה)', 'בדיקת איטום בבנייה מדורגת והררית', 'ביקורת מערכות חימום תת-רצפתי והסקה'],
+## למה בדק בית בירושלים שונה מבערים אחרות בארץ?
+
+בניגוד לערי מרכז הארץ שבהן שולטת בנייה מודרנית יחסית, ירושלים מציבה בפני מהנדס בודק אתגרים ייחודיים הנובעים ממאפייני הבנייה וההיסטוריה של העיר:
+
+**בנייה מאבן ירושלמית** - תקנות התכנון והבנייה מחייבות ציפוי אבן בחזיתות רבות בעיר, מה שיוצר שכבת חיפוי נוספת מעל שלד הבטון. שכבה זו עלולה להסתיר בעיות איטום ורטיבות מתחת לפני השטח, ומצריכה עין הנדסית מנוסה שיודעת בדיוק היכן ואיך לבדוק מאחורי החיפוי.
+
+**בעיות לחות אופייניות** - האקלים הירושלמי, המשלב חורף קר וגשום עם הבדלי טמפרטורה חדים בין יום ולילה, יוצר תנאים המעודדים עיבוי ולחות בקירות חיצוניים, בייחוד במבנים ותיקים עם בידוד תרמי לקוי. איתור רטיבות במצלמה תרמית הופך לכלי חיוני במיוחד בבדיקות בעיר.
+
+**טופוגרפיה והבדלי גובה** - ירושלים בנויה על גבעות רבות, ומבנים רבים בעיר נבנים על מדרונות או עם הבדלי גובה משמעותיים בין קומות שונות. מצב זה מחייב תשומת לב מיוחדת ליציבות הקרקע, לתשתיות הניקוז ולסיכון לשקיעות דיפרנציאליות - ליקוי הנדסי שעלול להיות יקר ומסוכן במיוחד אם אינו מטופל בזמן.
+
+**שילוב מבנים עתיקים לצד בנייה חדשה** - בשכונות רבות בעיר, בניינים בני עשרות ואף מאות שנים עומדים לצד תוספות בנייה מודרניות או פרויקטי חיזוק (תמ"א 38). נקודות המפגש בין הישן לחדש הן מוקד שכיח לכשלי איטום ולבעיות מבניות המחייבות בדיקה קפדנית.
+
+## מה כולל בדק בית מקצועי בירושלים?
+
+בדיקה הנדסית מקיפה בירושלים כוללת את כל המרכיבים הסטנדרטיים של בדק בית - שלד, איטום, מערכות חשמל ואינסטלציה, גימור וטיח - אך עם דגש מיוחד על המאפיינים המקומיים:
+
+## מתי כדאי להזמין בדק בית בירושלים?
+
+מומלץ להזמין את הבדיקה בשלב שבו כבר יש הסכמה ראשונית על מחיר בין הצדדים, אך לפני חתימה על חוזה מכר מחייב - כך שממצאי הדוח עדיין יכולים לשמש אתכם במשא ומתן. עבור דירות חדשות מקבלן או בפרויקטי התחדשות עירונית באזור ירושלים, מומלץ גם לבצע בדיקת שנת בדק לקראת תום השנה הראשונה למגורים, כדי לוודא שהיזם מתקן כל ליקוי שהתגלה על חשבונו.
+
+## דוח הנדסי המותאם לאתגרי הבנייה הירושלמית
+
+בסיום הבדיקה אתם מקבלים דוח הנדסי מפורט, הכולל תיעוד צילומי מקיף, הסבר ברור על כל ממצא, והמלצות תיקון מעשיות. הדוח מנוסח כך שיהיה קביל כחוות דעת מומחה בבית משפט במקרה הצורך, ומעניק לכם כוח מיקוח אמיתי מול המוכר, הקבלן או היזם - בין אם מדובר בדירה יד שנייה בשכונה ותיקה, בית פרטי על מדרון, או דירה חדשה בפרויקט התחדשות עירונית.
+
+## זקוקים לבדק בית מקצועי בירושלים?
+
+הצוות שלנו באריקס ביקורת מבנים מכיר לעומק את אתגרי הבנייה הייחודיים לעיר - מבנייה מאבן ועד יסודות על קרקע הררית - ומספק ליווי הנדסי מלא לרוכשים בירושלים ובסביבתה. קבעו ייעוץ חינם עם אינג' יוסי פרי ובואו נבטיח יחד את ההשקעה שלכם.`,
+    points: [
+      'בדיקת חיפוי האבן ואיתור סימנים לחדירת מים מתחתיו, כולל בדיקה במצלמה תרמית לאיתור רטיבות סמויה',
+      'בחינת יציבות הקרקע והיסודות, בפרט בנכסים הבנויים על מדרון או עם הבדלי גובה',
+      'איתור סדקים והבחנה בין סדקי התכווצות טבעיים לסדקים מבניים המעידים על בעיה חמורה יותר, תופעה נפוצה יותר במבנים ותיקים בעיר',
+      'בדיקת נקודות מפגש בין מבנה ישן לתוספת בנייה חדשה, במיוחד בפרויקטי חיזוק ותוספות',
+      'תפקוד מערכות החימום והבידוד התרמי, קריטי בעיר עם חורפים קרים משמעותית מהמרכז'
+    ],
     commonDefects: [
-      { title: 'עובש כרוני בחדרים צפוניים', desc: 'חדירת קור דרך קירות החוץ עקב בידוד תרמי לקוי.' },
-      { title: 'נשירת אריחי חיפוי', desc: 'כשלים בעיגון מכני של האבן הירושלמית לקירות השלד.' },
-      { title: 'חדירת מים מקירות תמך', desc: 'איטום שלילי לקוי בקירות שפונים לכיוון ההר.' }
+      { title: 'רטיבות מתחת לחיפוי אבן', desc: 'כשל באיטום מעטפת המסתתר מתחת לשכבת האבן הירושלמית.' },
+      { title: 'בעיות עיבוי ולחות', desc: 'גשרי קור ובידוד תרמי לקוי באקלים הירושלמי הקר.' },
+      { title: 'שקיעות בטופוגרפיה הררית', desc: 'תנודות בקרקע ובקירות תמך בנכסים בנויים על מדרון.' },
+      { title: 'כשלי איטום במבנים משולבים', desc: 'בעיות בנקודות חיבור בין מבנה ישן לתוספות תמ"א 38.' }
     ],
     localStats: [
       { label: 'בדיקות שבוצעו בעיר', value: '310+' },
-      { label: 'בעיות בידוד תרמי', value: '28%' }
+      { label: 'בעיות בידוד ואיטום', value: '28%' }
+    ],
+    relatedServices: [
+      { label: 'בדק בית לדירה חדשה מקבלן', href: '/בדק-בית-מקבלן' },
+      { label: 'ביקורת דירה יד שנייה לפני קנייה', href: '/בדק-בית-יד-שנייה' },
+      { label: 'איתור נזילות ורטיבות תרמי', href: '/איתור-נזילות-ורטיבות' },
+      { label: 'חוות דעת הנדסית לבית משפט', href: '/חוות-דעת-הנדסית-לבית-משפט' }
     ],
     image: 'https://images.unsplash.com/photo-1542668595-df665422894f?auto=format&fit=crop&w=1200&q=80'
   },
@@ -277,23 +321,66 @@ const LocationPage: React.FC<LocationPageProps> = ({ city }) => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 text-right">
               <div className="lg:col-span-2 space-y-10">
                 <div className="bg-slate-50 p-8 md:p-12 rounded-[3rem] border border-slate-100">
-                  <h2 className="text-3xl font-black text-slate-900 mb-8 italic">בדק בית באזור {city}</h2>
+                  <h2 className="text-3xl font-black text-slate-900 mb-8 italic">{data.articleHeadline || `בדק בית באזור ${city}`}</h2>
                   <div className="prose prose-slate max-w-none text-slate-600 leading-relaxed text-lg space-y-6">
-                    {data.article.split('\n\n').map((paragraph, i) => (
-                      <p key={i} dangerouslySetInnerHTML={{ __html: paragraph.replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-900">$1</strong>') }} />
-                    ))}
+                    {data.article.split('\n\n').map((paragraph, i) => {
+                      if (paragraph.startsWith('### ')) {
+                        return (
+                          <h3 key={i} className="text-2xl font-black text-slate-900 mt-8 mb-4">
+                            {paragraph.replace('### ', '')}
+                          </h3>
+                        );
+                      }
+                      if (paragraph.startsWith('## ')) {
+                        return (
+                          <h2 key={i} className="text-2xl md:text-3xl font-black text-slate-900 mt-10 mb-4 border-b border-slate-200 pb-3">
+                            {paragraph.replace('## ', '')}
+                          </h2>
+                        );
+                      }
+                      return (
+                        <p
+                          key={i}
+                          dangerouslySetInnerHTML={{
+                            __html: paragraph.replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-900 font-bold">$1</strong>')
+                          }}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {data.points.map((p) => (
                     <div key={p} className="flex items-center justify-end gap-4 bg-white p-6 rounded-2xl border border-slate-100 hover:border-blue-500/50 transition-all shadow-sm group">
                       <span className="font-bold text-slate-900 leading-tight">{p}</span>
-                      <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center font-black group-hover:bg-blue-600 group-hover:text-white transition-all">
+                      <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center font-black group-hover:bg-blue-600 group-hover:text-white transition-all shrink-0">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
                       </div>
                     </div>
                   ))}
                 </div>
+
+                {data.relatedServices && data.relatedServices.length > 0 && (
+                  <div className="bg-blue-50/70 p-8 rounded-[2.5rem] border border-blue-100 mt-8">
+                    <h3 className="text-2xl font-black text-slate-900 mb-6 italic text-right">
+                      שירותים רלוונטיים - קישורים פנימיים
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {data.relatedServices.map((service, idx) => (
+                        <Link
+                          key={idx}
+                          href={service.href}
+                          className="flex items-center justify-between bg-white p-5 rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-md transition-all group"
+                        >
+                          <span className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                            {service.label}
+                          </span>
+                          <ChevronLeft className="w-5 h-5 text-blue-600 group-hover:-translate-x-1 transition-transform shrink-0" />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
               <aside className="lg:col-span-1">
                 <div className="sticky top-32 bg-blue-600 text-white p-10 rounded-[3rem] shadow-xl">
