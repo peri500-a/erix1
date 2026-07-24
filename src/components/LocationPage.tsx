@@ -289,8 +289,8 @@ const LocationPage: React.FC<LocationPageProps> = ({ city }) => {
             <Breadcrumbs items={[{ label: 'אזורי שירות' }, { label: data.title }]} />
             <div className="flex flex-col lg:flex-row gap-12 items-start mt-8">
               <div className="lg:w-2/3">
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 mb-6 leading-none">{data.title}</h1>
-                <p className="text-2xl text-blue-600 font-bold mb-8 italic">{data.desc}</p>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-6 leading-tight">{data.title}</h1>
+                <p className="text-lg md:text-xl text-blue-600 font-bold mb-8 italic">{data.desc}</p>
                 <div className="flex flex-wrap gap-4">
                    <div className="bg-blue-50 border border-blue-100 px-6 py-3 rounded-2xl">
                       <span className="text-xs text-slate-400 block uppercase font-black">מאפייני קרקע</span>
