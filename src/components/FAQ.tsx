@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 import SchemaTags from './SchemaTags';
 
-const FaqItem: React.FC<{ question: string; answer: string; index: number; defaultOpen?: boolean }> = ({ question, answer, index, defaultOpen = false }) => {
+const FaqItem: React.FC<{ question: string; answer: string; index: number; defaultOpen?: boolean }> = ({ question, answer, index, defaultOpen = true }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
@@ -106,7 +106,7 @@ const FAQ: React.FC = () => {
         </div>
         <div className="max-w-4xl mx-auto bg-slate-50 p-8 md:p-16 rounded-[3rem] border border-slate-100 shadow-sm">
           {faqs.map((faq, index) => (
-            <FaqItem key={index} question={faq.question} answer={faq.answer} index={index} defaultOpen={index === 0} />
+            <FaqItem key={index} question={faq.question} answer={faq.answer} index={index} defaultOpen={true} />
           ))}
         </div>
       </div>
