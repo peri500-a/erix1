@@ -90,7 +90,7 @@ export default function ServiceWizard() {
     },
     {
       id: 'pergola',
-      title: 'אישור מהנדס לפרגולה',
+      title: 'אישור מהנדס לפרגולה (תיקון 101)',
       desc: 'הגשת אישור יציבות חתום לעירייה (תיקון 101)',
       icon: <FileCheck className="w-8 h-8 text-amber-500" />,
       subOptions: [

@@ -182,39 +182,60 @@ const LeakDetectionPage: React.FC = () => {
       {/* Main Context with Visual Layout */}
       <section className="py-16 bg-white border-y border-slate-100">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             
-            {/* Why standard plumber fails */}
-            <div className="bg-blue-50/70 border-r-4 border-blue-600 p-8 rounded-l-3xl shadow-sm animate-fade-in">
-              <span className="text-blue-800 font-black text-xs uppercase tracking-widest block mb-2">◀ השוואה צרכנית חשובה ביותר</span>
-              <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4 leading-tight">
-                למה אינסטלטורים חובבנים {"\""}מנחשים{"\""} במקום לאבחן?
-              </h2>
-              <p className="text-slate-755 text-base leading-relaxed mb-4">
-                אינסטלטורים רבים רוכשים מצלמות תרמיות זולות מבלי לעבור שום הכשרה הנדסית מתאימה. הם מפרשים {"\""}צל כחול{"\""} פשוט כרטיבות פעילה, בעוד שלעיתים מדובר רק בהבדל טמפרטורה הנובע מגשרי קור בבטון או מזרם אוויר חיצוני.
-              </p>
-              <p className="text-slate-755 text-base leading-relaxed">
-                מהנדסי אריקס ביקורת מבנים מבצעים את האנליזה בראייה מערכתית קפדנית, תוך שימוש במד לחות חודרני מדעי ובדיקת קווי ניקוז דינמיים. הדוח ההנדסי מהווה מסמך {"\""}חסין ויכוחים{"\""} מול עורכי הדין של חברות הבנייה הגדולות ושותפי הבית.
-              </p>
-            </div>
-
-            {/* Scientific explanation */}
+            {/* Main overview */}
             <div className="space-y-6 text-right">
               <h2 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight">
-                הסכנה הבריאותית והסמויה של רטיבות כלואה
+                איתור נזילות ורטיבות תרמי (ISO 6781)
               </h2>
               <p className="text-slate-600 text-base leading-relaxed">
-                רטיבות כלואה מתחת לריצוף שעולה על 6% לחות (בהתאם לתקן {"ת\"י"} 1555) אינה {"\""}מתייבשת עצמאית{"\""} לעולם. היא נודדת ומטפסת בהדרגה במעלה קירות הבית, ומייצרת סביבה אידיאלית לצמיחה של עובש שחור פטרייתי (Stachybotrys).
+                רטיבות ונזילות מים הן מהליקויים הנפוצים והמזיקים ביותר בנכסים בישראל - ובה בעת, הקשים ביותר לאיתור בשיטות מסורתיות. נזילה בצנרת תת-קרקעית, כשל באיטום גג או מרפסת, או חדירת מים משכן סמוך, יכולים להתפתח במשך חודשים מבלי שהנזק ייראה לעין, עד שהוא מגיע לממדים משמעותיים ופוגע בשלד המבנה, בטיח ובריצוף.
               </p>
-              <p className="text-slate-600 text-base leading-relaxed">
-                פטריות העובש הללו משחררות רעלנים סמויים לאוויר הנשימה של חלל הבית, מה שמייצר בעיות נשימה קשות, אסטמה אצל ילדים ואלרגיות כרוניות חמורות. איתור נזילות מוקדם שומר ובונה חומת מגן בריאותית למשפחתכם.
-              </p>
-              <div className="p-6 bg-slate-50 border border-slate-100 rounded-2xl">
-                <h4 className="font-bold text-slate-900 mb-1 text-base">חוות דעת המשמשת כראיה משפטית קשיחה</h4>
-                <p className="text-slate-500 text-xs leading-relaxed">
-                  הדוחות ההנדסיים של אריקס ביקורת מבנים כוללים צילום צבעוני, צילום תרמי מקביל, מדידת אחוזי לחות מדויקים, סימוכין מהתקנים המקצועיים והוראות לתיקון מפורט, ורשומים ברוח פקודת הראיות.
+              
+              <div className="p-6 bg-slate-50 border border-slate-100 rounded-2xl space-y-2">
+                <h3 className="font-bold text-slate-900 text-lg">טכנולוגיית איתור מתקדמת ללא הרס</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  בניגוד לשיטות ישנות המבוססות על שבירת קרמיקה או ניחוש מושכל, אנו משתמשים במצלמת תרמית (FLIR) מקצועית, בהתאם לתקן הבינלאומי ISO 6781 העוסק באבחון תרמי של מעטפת מבנים. המצלמה התרמית ממפה הפרשי טמפרטורה זעירים בקירות, בתקרות וברצפות, המעידים על נוכחות רטיבות, נזילת מים או כשל בבידוד - כל זאת מבלי לגרום כל נזק לנכס. לצד המצלמה התרמית, אנו נעזרים במד לחות דיגיטלי ובמכשור אקוסטי לאיתור זרימת מים בצנרת סמויה, לקבלת תמונה מדויקת ומקיפה של מקור הבעיה.
                 </p>
               </div>
+
+              <div className="p-6 bg-blue-50/70 border border-blue-100 rounded-2xl space-y-2">
+                <h3 className="font-bold text-slate-900 text-lg">הדוח שאתם מקבלים</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  בסיום הבדיקה תקבלו דוח מפורט הכולל תיעוד תרמי וויזואלי, מיקום מדויק של מקור הרטיבות או הנזילה, והסבר הנדסי ברור על היקף הבעיה והדרך המומלצת לתיקון. דוח זה משמש כבסיס איתן להתנהלות מול קבלנים, שכנים או חברות ביטוח, ובמידת הצורך - קביל גם כחוות דעת מומחה בהליכים משפטיים.
+                </p>
+              </div>
+            </div>
+
+            {/* When to inspect checklist */}
+            <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-lg space-y-6">
+              <span className="text-blue-400 font-bold text-xs uppercase tracking-widest block">מתי מומלץ לבצע?</span>
+              <h3 className="text-2xl font-black text-white leading-tight">
+                מתי כדאי להזמין את הבדיקה?
+              </h3>
+              <ul className="space-y-4 text-slate-300 text-sm leading-relaxed">
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></span>
+                  <span>לפני רכישת דירה או בית, כחלק מבדק בית מקיף</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></span>
+                  <span>כאשר מבחינים בכתמי רטיבות, קילופי צבע או ריח עובש</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></span>
+                  <span>במחלוקת מול שכן, קבלן או ועד בית לגבי מקור נזילה</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></span>
+                  <span>לקראת החורף, לבדיקת תקינות איטום הגג והמרפסות</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 rounded-full bg-blue-400 mt-2 shrink-0"></span>
+                  <span>לצורך הגשת תביעה לחברת ביטוח</span>
+                </li>
+              </ul>
             </div>
 
           </div>

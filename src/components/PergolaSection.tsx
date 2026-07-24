@@ -70,7 +70,7 @@ const PergolaSection: React.FC = () => {
           </div>
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-6">
-            אישור מהנדס לפרגולה בפשטות ובמהירות
+            אישור מהנדס לפרגולה (תיקון 101) בפשטות ובמהירות
           </h1>
           
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl mx-auto">
@@ -120,50 +120,41 @@ const PergolaSection: React.FC = () => {
         </div>
       </section>
 
-      {/* Core Service Explanation Section - Less sophisticated, short, crystal clear */}
+      {/* Detailed Service Explanation Section */}
       <section id="core-service" className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-950">
-              איך עובד תהליך קבלת האישור לפרגולה?
-            </h2>
-            <p className="text-slate-600 mt-2 text-sm sm:text-base">
-              אנו דואגים להפוך את ההליך לפשוט, קצר וידידותי עבורכם. ללא בירוקרטיה מיותרת.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Step 1 */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm text-center">
-              <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4">
-                1
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">תיאום וביקור בשטח</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                אנו מתאמים מועד נוח ומהנדס מגיע אליכם לבחון את הפרגולה, את איכות החומרים ואת אופן החיבור והעיגון שלה.
+          <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-sm text-right space-y-8">
+            <div>
+              <span className="text-blue-600 font-bold text-xs uppercase tracking-widest block mb-2">תקנות התכנון והבנייה - תיקון 101</span>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-950 leading-tight mb-4">
+                אישור מהנדס לפרגולה (תיקון 101)
+              </h2>
+              <p className="text-slate-700 text-base leading-relaxed">
+                בניית פרגולה, גם כאשר מדובר במבנה קל יחסית, אינה פטורה מדרישות התכנון והבנייה בישראל. תיקון 101 לתקנות התכנון והבנייה קובע כי גם מבנים הפטורים מהיתר בנייה מלא מחויבים בבדיקת יציבות הנדסית ובאישור מהנדס קונסטרוקטור רשום, המוגש כחלק מהליך הרישוי מול הוועדה המקומית לתכנון ובנייה. ללא אישור זה, אתם עלולים למצוא את עצמכם מול צו הריסה, קנס, או קושי משפטי בעת מכירת הנכס בעתיד - שכן פרגולה ללא אישור מהנדס תקין עלולה להיחשב כחריגת בנייה.
               </p>
             </div>
 
-            {/* Step 2 */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm text-center">
-              <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4">
-                2
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 space-y-3">
+                <h3 className="font-bold text-slate-900 text-lg border-b border-slate-200/80 pb-2">מה כולל תהליך האישור?</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  אנו מבצעים ביקור בשטח ובוחנים את מפרט הפרגולה, סוג החומרים (עץ, אלומיניום או מתכת), שיטת העיגון לקרקע או לגג, וחוזק העמידה בעומסי רוח ומשקל גג (כולל גגות מוצלים, סוככים או פרגולות מקורות בלוחות פוליקרבונט). הבדיקה בוחנת גם את מרחק הפרגולה מגבולות המגרש והשפעתה על מבנים סמוכים, בהתאם לדרישות התב&quot;ע החלה על הנכס.
+                </p>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  בסיום הבדיקה, אנו מנפיקים אישור קונסטרוקטור חתום ומפורט, הכולל את כל החישובים ההנדסיים הנדרשים, ומלווים אתכם בהגשת הדיווח לעירייה - כך שהתהליך מול הרשות המקומית מתבצע בצורה חלקה וללא עיכובים מיותרים.
+                </p>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">ייעוץ והכוונה הנדסית</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                במידה ונדרש חיזוק פשוט כלשהו כדי להבטיח בטיחות מלאה, המהנדס ינחה אתכם בדיוק מה לבצע בצורה ברורה וקלה.
-              </p>
+
+              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 space-y-3">
+                <h3 className="font-bold text-slate-900 text-lg border-b border-slate-200/80 pb-2">למי מיועד השירות?</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  השירות מתאים הן לבעלי נכסים המתכננים להקים פרגולה חדשה ומעוניינים לוודא שהתכנון עומד בדרישות התקן מראש, והן לבעלי נכסים עם פרגולה קיימת שנבנתה ללא אישור מסודר וזקוקים להסדרה רטרואקטיבית מול הרשויות. במקרים רבים, אישור מהנדס נדרש גם כתנאי מקדים בעסקאות מכר או במסגרת דרישות חברת הביטוח.
+                </p>
+              </div>
             </div>
 
-            {/* Step 3 */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm text-center">
-              <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4">
-                3
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">קבלת אישור חתום</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                עם סיום הבדיקה, אנו מנפיקים לכם דוח יציבות הנדסי חתום דיגיטלית שמוכן להגשה ישירה לעירייה או לוועדה המקומית.
-              </p>
+            <div className="bg-blue-50/80 border border-blue-100 p-5 rounded-2xl text-blue-950 font-bold text-base leading-relaxed">
+              עם ניסיון של מעל 30 שנה בתחום הביקורת ההנדסית, אינג&apos; יוסי פרי מספק אישורי קונסטרוקטור מדויקים, קבילים ומוכרים על ידי הרשויות בכל רחבי הארץ.
             </div>
           </div>
         </div>

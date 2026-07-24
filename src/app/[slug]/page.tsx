@@ -15,12 +15,11 @@ import AccessibilityStatement from "../../components/AccessibilityStatement";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import PergolaSection from "../../components/PergolaSection";
 import CommonSections from "../../components/CommonSections";
-import Testimonials from "../../components/Testimonials";
-import AccessibilitySection from "../../components/AccessibilitySection";
 import Contact from "../../components/Contact";
 import { articles } from "../../data/articles";
 import InspectionChecklist from "../../components/InspectionChecklist";
 import ViolationsComparisonTable from "../../components/ViolationsComparisonTable";
+import ComplexBuildingDefectsPage from "../../components/ComplexBuildingDefectsPage";
 
 import { notFound } from 'next/navigation';
 
@@ -64,6 +63,8 @@ const mainPageMapping: Record<string, () => React.ReactNode> = {
   'warranty-inspection': () => <WarrantyInspectionPage />,
   'איתור-נזילות-ורטיבות': () => <LeakDetectionPage />,
   'leak-detection': () => <LeakDetectionPage />,
+  'איתור-ליקויי-בנייה-מורכבים': () => <ComplexBuildingDefectsPage />,
+  'complex-building-defects': () => <ComplexBuildingDefectsPage />,
   'חוות-דעת-הנדסית-לבית-משפט': () => <CourtExpertPage />,
   'court-expert': () => <CourtExpertPage />,
   'בדק-בית-מחיר': () => <PricingPage />,
@@ -79,8 +80,6 @@ const mainPageMapping: Record<string, () => React.ReactNode> = {
         <Breadcrumbs items={[{ label: 'שירותים' }, { label: 'אישור מהנדס לפרגולה' }]} />
       </div>
       <PergolaSection />
-      <Testimonials />
-      <AccessibilitySection />
       <Contact />
     </div>
   ),
@@ -90,8 +89,6 @@ const mainPageMapping: Record<string, () => React.ReactNode> = {
         <Breadcrumbs items={[{ label: 'שירותים' }, { label: 'אישור מהנדס לפרגולה' }]} />
       </div>
       <PergolaSection />
-      <Testimonials />
-      <AccessibilitySection />
       <Contact />
     </div>
   ),
@@ -228,6 +225,15 @@ const metadataMapping: Record<string, { title: string; description: string; keyw
   'leak-detection': {
     title: 'איתור נזילות ורטיבות במצלמה תרמית | איתור נזילות מומחה | אריקס ביקורת מבנים',
     description: 'איתור נזילות, כשלי איטום ורטיבות קפילארית סמויה באמצעות מכשור תרמוגרפי מתקדם (מצלמות FLIR). דוח מהנדס מפורט עם המלצות וקבילות משפטית.',
+  },
+  'איתור-ליקויי-בנייה-מורכבים': {
+    title: 'איתור ליקויי בנייה הנדסיים מורכבים (ת"י 1920) | אריקס ביקורת מבנים',
+    description: 'אבחון ומיפוי ליקויי בנייה מורכבים ע"י מהנדס מוסמך בהתאם לתקן ת"י 1920. סדקים מבניים, כשלי קונסטרוקציה ובעיות בטיחות עם דוח הנדסי מחייב.',
+    keywords: ['איתור ליקויי בנייה מורכבים', 'סדקים מבניים', 'תקן ת"י 1920', 'בדיקת קונסטרוקציה', 'ליקויי שלד ובטיחות']
+  },
+  'complex-building-defects': {
+    title: 'איתור ליקויי בנייה הנדסיים מורכבים (ת"י 1920) | אריקס ביקורת מבנים',
+    description: 'אבחון ומיפוי ליקויי בנייה מורכבים ע"י מהנדס מוסמך בהתאם לתקן ת"י 1920. סדקים מבניים, כשלי קונסטרוקציה ובעיות בטיחות עם דוח הנדסי מחייב.',
   },
   'חוות-דעת-הנדסית-לבית-משפט': {
     title: 'חוות דעת הנדסית לבית משפט | מהנדס מומחה קביל משפטית - אריקס',

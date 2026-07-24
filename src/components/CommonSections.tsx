@@ -12,16 +12,21 @@ import TrustBadges from "./TrustBadges";
 interface CommonSectionsProps {
   excludeWhyUs?: boolean;
   excludePergola?: boolean;
+  isHomePage?: boolean;
 }
 
-const CommonSections: React.FC<CommonSectionsProps> = ({ excludeWhyUs = false, excludePergola = false }) => {
+const CommonSections: React.FC<CommonSectionsProps> = ({ 
+  excludeWhyUs = false, 
+  excludePergola = false,
+  isHomePage = false
+}) => {
   return (
     <>
       {!excludeWhyUs && <WhyUs />}
-      <Testimonials />
+      {isHomePage && <Testimonials />}
       <TrustBadges />
       <FAQ />
-      <AccessibilitySection />
+      {isHomePage && <AccessibilitySection />}
       {!excludePergola && <PergolaSection />}
       <Contact />
     </>

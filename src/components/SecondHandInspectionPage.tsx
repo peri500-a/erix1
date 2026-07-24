@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import Testimonials from './Testimonials';
-import AccessibilitySection from './AccessibilitySection';
 import Contact from './Contact';
 import Breadcrumbs from './Breadcrumbs';
 import SchemaTags from './SchemaTags';
@@ -65,23 +63,19 @@ const SecondHandInspectionPage: React.FC = () => {
         
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-right">
           <div className="max-w-4xl">
-            <Breadcrumbs items={[{ label: 'שירותים', href: '/' }, { label: 'בדק בית יד שנייה' }]} />
+            <Breadcrumbs items={[{ label: 'שירותים', href: '/' }, { label: 'ביקורת דירה יד שנייה לפני קנייה' }]} />
             
             <span className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-xs font-black tracking-widest mb-6 uppercase mt-4">
               <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-              איתור ליקויי בנייה מבוסס טכנולוגיה
+              תקן ישראלי ת&quot;י 1205
             </span>
 
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-              בדק בית לדירה יד שנייה – הגנה הנדסית וכלכלית לפני הרכישה
+              ביקורת דירה יד שנייה לפני קנייה
             </h1>
             
-            <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-6 max-w-3xl">
-              רכישת דירה יד שנייה היא אחת העסקאות הכלכליות הגדולות והחשובות ביותר בחייכם. בניגוד לדירה חדשה מקבלן, שבה קיימת תקופת בדק ואחריות מוגדרת בחוק, בדירה יד שנייה אף שחל העיקרון המשפטי של &quot;ייזהר המוכר&quot; ואף שסעיף 16 לחוק המכר (הכללי) חל בנסיבות האלו עדיין קיימת אחריות מסוימת של הקונה לבדוק את המימכר. ברגע שהחזקה נמסרה, ואם לאחר תקופה סבירה הקונה לא טוען שהנכס אינו תואם את מצב AS IS שעליו הוסכם יקשה מאוד (ולעיתים בלתי אפשרי) על הקונה לבוא בטענות או בדרישות פיצוי למוכר בגין ליקויים שהתגלו בדירה – אלא אם כן הוכח שהמוכר הסתיר אותם בכוונת תחילה.
-            </p>
-
             <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-8 max-w-3xl">
-              בדיוק לשם כך נועד שירות <strong className="text-blue-300">בדק בית לדירה יד שנייה</strong>. מטרת הבדיקה ההנדסית היא לחשוף את כל הליקויים הסמויים והגלויים בנכס, להעניק לכם תמונת מצב אובייקטיבית ומדויקת, ולספק לכם כלי עוצמתי לניהול המשא ומתן על מחיר הדירה או לקבלת החלטה מושכלת האם לבצע את העסקה.
+              אבחון הנדסי מקיף וגילוי ליקויים סמויים לפני החתימה על החוזה – הגנה מלאה על ההשקעה שלכם וקבלת כוח מיקוח ממשי במשא ומתן.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -112,84 +106,69 @@ const SecondHandInspectionPage: React.FC = () => {
                 <svg className="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                 </svg>
-                חוות דעת קבילות בבית משפט
+                בדיקה לפי תקן ת&quot;י 1205
               </span>
               <span className="flex items-center gap-1.5 font-bold">
                 <svg className="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                 </svg>
-                דוח הנדסי מפורט תוך 48 שעות
+                דוח הנדסי מפורט וקביל
               </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4 leading-tight">
-              למה רצוי לבצע בדק בית לפני קניית דירה יד שנייה?
-            </h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full mb-6"></div>
-            <p className="text-slate-600 text-lg max-w-3xl mx-auto">
-              מוכרי דירות רבים, לעיתים גם מבלי לדעת בעצמם, נוטים &quot;לאפר&quot; את הדירה לקראת המכירה – צביעה מהירה של קיר עם סימני רטיבות, הסתרת סדקים מאחורי ארונות, או פתרונות זמניים לבעיות אינסטלציה. עין בלתי מקצועית של רוכש נלהב או תופעת ראיית המינהרה אינה יכולה להבחין בכשלים הנדסיים אלו.
-            </p>
-          </div>
-
-          <p className="text-slate-800 text-xl font-bold mb-8 text-center">
-            ביצוע בדיקה הנדסית מקצועית מעניק לכם יתרונות קריטיים:
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-all">
-              <div className="p-3 bg-red-100 text-red-600 rounded-2xl shrink-0">
-                <AlertTriangle className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-lg font-black text-slate-950 mb-2">חשיפת ליקויים סמויים</h3>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  איתור בעיות איטום, כשלי מערכות אינסטלציה, נזילות פנימיות ובעיות קונסטרוקציה.
-                </p>
-              </div>
+      {/* Main Core Explanation Section */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200/80 shadow-sm text-right space-y-10">
+            
+            {/* Introductory Callout */}
+            <div className="border-r-4 border-blue-600 pr-5 py-1">
+              <p className="text-slate-800 text-lg md:text-xl leading-relaxed font-medium">
+                רכישת דירה יד שנייה היא לרוב העסקה הכלכלית המשמעותית ביותר בחיים, אך בניגוד לדירה חדשה מקבלן, כאן אין אחריות יצרן ואין שנת בדק. כל ליקוי שיתגלה לאחר החתימה על החוזה - מרטיבות נסתרת ועד בעיות בשלד - הופך באחת לבעיה שלכם בלבד, על כל העלות הכרוכה בתיקונה. משום כך, בדק בית לפני קנייה אינו הוצאה מיותרת אלא כלי הגנה בסיסי על ההשקעה שלכם.
+              </p>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-all">
-              <div className="p-3 bg-blue-100 text-blue-600 rounded-2xl shrink-0">
-                <Scale className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-lg font-black text-slate-950 mb-2">הערכת עלויות תיקון</h3>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  הדוח ההנדסי כולל אומדן כספי מדויק לתיקון הליקויים שנמצאו.
+            {/* Grid of detailed content */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              
+              {/* Box 1: מה כוללת הבדיקה? */}
+              <div className="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-100 space-y-3">
+                <div className="flex items-center gap-2 text-blue-600 font-bold">
+                  <CheckCircle2 className="w-6 h-6 shrink-0" />
+                  <h3 className="text-xl font-black text-slate-900">מה כוללת הבדיקה?</h3>
+                </div>
+                <p className="text-slate-700 text-base leading-relaxed">
+                  הביקורת מתבצעת בהתאם לתקן הישראלי ת&quot;י 1205, העוסק בבדיקת דירות מגורים לפני מכירה, ומכסה את כלל מערכות הדירה: איתור סדקים וסימני תזוזה בקירות ובתקרות, בדיקת רטיבות וכשלי איטום בחדרים רטובים, במרפסות ובקירות חוץ, תקינות מערכת החשמל והלוח הראשי, מצב האינסטלציה והצנרת, תפקוד דלתות, חלונות ותריסים, ובחינת גימור הריצוף והטיח. כאשר קיים חשד לרטיבות סמויה, אנו משלבים גם סריקה במצלמה תרמית לאיתור מדויק ללא צורך בפגיעה בנכס.
                 </p>
               </div>
+
+              {/* Box 2: הכוח שבדוח ההנדסי */}
+              <div className="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-100 space-y-3">
+                <div className="flex items-center gap-2 text-blue-600 font-bold">
+                  <FileText className="w-6 h-6 shrink-0" />
+                  <h3 className="text-xl font-black text-slate-900">הכוח שבדוח ההנדסי</h3>
+                </div>
+                <p className="text-slate-700 text-base leading-relaxed">
+                  בסיום הבדיקה מתקבל דוח הנדסי מפורט, הכולל תיעוד צילומי של כל ממצא, הסבר על חומרת הליקוי והערכת עלות תיקון משוערת. דוח זה הוא הרבה מעבר לרשימת תקלות - הוא כלי משא ומתן ממשי. במקרים רבים, לקוחותינו השתמשו בממצאי הדוח כדי לדרוש הפחתת מחיר משמעותית מהמוכר, לתקן ליקויים כתנאי להשלמת העסקה, או במקרים חריגים - לסגת מעסקה שהתבררה כבעייתית מדי.
+                </p>
+              </div>
+
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-all">
-              <div className="p-3 bg-green-100 text-green-600 rounded-2xl shrink-0">
-                <ShieldCheck className="w-6 h-6" />
+            {/* Box 3: מתי כדאי להזמין את הבדיקה? */}
+            <div className="bg-blue-50/70 border border-blue-100 p-6 sm:p-8 rounded-2xl space-y-3">
+              <div className="flex items-center gap-2 text-blue-800 font-bold">
+                <Scale className="w-6 h-6 shrink-0" />
+                <h3 className="text-xl font-black text-slate-900">מתי כדאי להזמין את הבדיקה?</h3>
               </div>
-              <div>
-                <h3 className="text-lg font-black text-slate-950 mb-2">כלי חזק למשא ומתן</h3>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  אם מתגלים ליקויים בשווי עשרות אלפי שקלים, יש לכם בסיס מוצק לדרוש מהמוכר להפחית את עלות התיקון ממחיר הדירה.
-                </p>
-              </div>
+              <p className="text-slate-700 text-base leading-relaxed">
+                מומלץ לבצע את הביקורת לאחר סיכום ראשוני על מחיר עם המוכר אך לפני חתימה על חוזה מחייב, כך שתוצאות הבדיקה עדיין יכולות להשפיע על תנאי העסקה. הבדיקה נמשכת כשעה עד שעתיים בהתאם לגודל הדירה, והדוח המלא מועבר תוך ימים ספורים - מהירות המאפשרת לכם לעמוד בלוחות הזמנים הנהוגים בעסקאות נדל&quot;ן מבלי להתפשר על יסודיות הבדיקה.
+              </p>
             </div>
 
-            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 flex gap-4 items-start shadow-sm hover:shadow-md transition-all">
-              <div className="p-3 bg-amber-100 text-amber-600 rounded-2xl shrink-0">
-                <CheckCircle2 className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-lg font-black text-slate-950 mb-2">שקט נפשי</h3>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  הידיעה המלאה מהו המצב ההנדסי האמיתי של הנכס אליו אתם נכנסים עם משפחתכם.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -395,8 +374,6 @@ const SecondHandInspectionPage: React.FC = () => {
         </div>
       </section>
 
-      <Testimonials />
-      <AccessibilitySection />
       <Contact />
     </div>
   );

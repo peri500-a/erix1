@@ -54,31 +54,31 @@ const Footer: React.FC = () => {
           <div className="text-right">
             <h4 className="text-base font-black mb-6 text-white pb-2 border-b border-slate-800 inline-block">שירותי בדק בית מובילים</h4>
             <nav className="flex flex-col gap-3 text-slate-400 font-bold text-sm">
-              <Link href="/new-apartment-inspection" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
+              <Link href="/בדק-בית-מקבלן" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
                 <span className="group-hover:translate-x-[-2px] transition-transform">בדק בית מקבלן (דירה חדשה)</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
               </Link>
-              <Link href="/second-hand-inspection" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
+              <Link href="/בדק-בית-יד-שנייה" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
                 <span className="group-hover:translate-x-[-2px] transition-transform">בדק בית לדירה יד שנייה</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
               </Link>
-              <Link href="/warranty-inspection" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
+              <Link href="/בדק-בית-סוף-שנת-בדק" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
                 <span className="group-hover:translate-x-[-2px] transition-transform">ביקורת שנת בדק מקצועית</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
               </Link>
-              <Link href="/villa-inspection" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
+              <Link href="/בדק-בית-לבית-פרטי-וילה" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
                 <span className="group-hover:translate-x-[-2px] transition-transform">בדק בית לווילות ובתים פרטיים</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
               </Link>
-              <Link href="/court-expert" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
+              <Link href="/חוות-דעת-הנדסית-לבית-משפט" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
                 <span className="group-hover:translate-x-[-2px] transition-transform">חוות דעת מומחה לבית משפט</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
               </Link>
-              <Link href="/leak-detection" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
+              <Link href="/איתור-נזילות-ורטיבות" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
                 <span className="group-hover:translate-x-[-2px] transition-transform">איתור רטיבות ונזילות מים</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
               </Link>
-              <Link href="/pergola-approval" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
+              <Link href="/אישור-מהנדס-לפרגולה" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
                 <span className="group-hover:translate-x-[-2px] transition-transform">אישור קונסטרוקטור לפרגולה</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
               </Link>
@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
                 <span className="group-hover:translate-x-[-2px] transition-transform">מרכז ידע הנדסי</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
               </Link>
-              <Link href="/accessibility-statement" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
+              <Link href="/הצהרת-נגישות" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
                 <span className="group-hover:translate-x-[-2px] transition-transform">הצהרת נגישות</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
               </Link>

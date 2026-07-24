@@ -35,10 +35,10 @@ export const metadata: Metadata = {
     apple: '/favicon.svg',
   },
   title: {
-    default: "אריקס ביקורת מבנים | בדק בית וביקורת הנדסית ע\"י מהנדס מומחה",
+    default: "בדק בית ברעננה, ת\"א והמרכז | אריקס ביקורת מבנים - מהנדס מוסמך",
     template: "%s | אריקס ביקורת מבנים"
   },
-  description: "אריקס ביקורת מבנים מספקת שירותי בדק בית לדירה חדשה מקבלן, ביקורת הנדסית לדירות יד שניה ואיתור ליקויי בנייה ע\"י מהנדסים מומחים. דוחות הנדסיים קבילים בבית משפט, איתור נזילות תרמי וליווי מקצועי.",
+  description: "למעלה מ-10,000 בדיקות ו-30 שנות ניסיון הנדסי. בדק בית לפני קנייה, בדק בית מקבלן ואיתור נזילות בטכנולוגיה תרמית. דוח הנדסי קביל בבית משפט - קבלו ייעוץ חינם עוד היום.",
   keywords: [
     "בדק בית",
     "ביקורת מבנים",
@@ -106,6 +106,50 @@ export default function RootLayout({
             name: "אריקס ביקורת מבנים",
             alternateName: ["אריקס ביקורת מבנים", "Erix Engineering", "Erix Building Inspection", "אריקס בדק בית", "אריקס"],
             url: "https://www.homeinspection.co.il/"
+          }} 
+        />
+        <SchemaTags 
+          type="LocalBusiness" 
+          data={{
+            name: "אריקס ביקורת מבנים - מהנדס בדק בית",
+            image: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1774888746/%D7%AA%D7%9E%D7%95%D7%A0%D7%AA_%D7%94%D7%90%D7%AA%D7%A8_%D7%94%D7%A8%D7%90%D7%A9%D7%991_yinn5i.jpg",
+            telephone: "052-2501008",
+            email: "erix1008@gmail.com",
+            url: "https://www.homeinspection.co.il/",
+            priceRange: "₪₪",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "רעננה",
+              addressRegion: "המרכז והשרון",
+              addressCountry: "IL"
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 32.1848,
+              longitude: 34.8713
+            },
+            openingHoursSpecification: [
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+                opens: "08:00",
+                closes: "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Friday"],
+                opens: "08:00",
+                closes: "13:00"
+              }
+            ],
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: "128"
+            },
+            areaServed: [
+              "רעננה", "תל אביב", "ירושלים", "הרצליה", "הוד השרון", "רמת השרון", "שוהם", "נס ציונה", "תל מונד", "אבן יהודה", "מרכז", "שרון"
+            ]
           }} 
         />
         <Suspense fallback={<div className="h-20 bg-white" />}>

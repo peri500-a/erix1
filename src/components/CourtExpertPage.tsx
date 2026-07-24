@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Scale, FileText, CheckCircle2, ShieldCheck, AlertTriangle, Droplet, Layers, Eye, ShieldAlert, Phone, HelpCircle, Award } from 'lucide-react';
-import AccessibilitySection from './AccessibilitySection';
 import Contact from './Contact';
 import Breadcrumbs from './Breadcrumbs';
 import SchemaTags from './SchemaTags';
@@ -399,59 +398,54 @@ const CourtExpertPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Intro Paragraph & Context */}
-      <section className="py-16 max-w-7xl mx-auto px-6">
-        <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-100 shadow-sm">
-          <p className="text-slate-600 text-lg leading-relaxed mb-6">
-            חברת <strong>אריקס ביקורת מבנים</strong>, בהובלת מהנדסים אזרחיים רשומים ומוסמכים, מתמחה בכתיבת חוות דעת מומחה לבתי משפט, לבוררויות ולגישורים, תוך עמידה קפדנית בדרישות תקסד״א 2018 - תקנות סדר דין אזרחי חדש 2018.
-          </p>
-        </div>
-      </section>
-
-      {/* Difference Section */}
-      <section className="py-16 bg-white border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 mb-4 border-r-4 border-blue-600 pr-4">מה ההבדל בין דוח בדק בית רגיל לבין חוות דעת הנדסית לבית משפט?</h2>
-            <p className="text-slate-600 text-lg">
-              רבים נוטים להתבלבל, אך מדובר בשני מסמכים בעלי משקל משפטי שונה לחלוטין:
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div 
-              whileHover={{ y: -5 }}
-              className="bg-slate-50 p-8 rounded-3xl border border-slate-200/60 shadow-sm relative overflow-hidden"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-slate-200/80 text-slate-700 flex items-center justify-center mb-6">
-                <FileText className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">דוח בדק בית סטנדרטי</h3>
-              <p className="text-slate-600 leading-relaxed">
-                מיועד בעיקר להתנהלות מול קבלן או מוכר נכס בשלבים ראשוניים (כמו שנת בדק או פרוטוקול מסירה), ומטרתו להציג רשימת ליקויים לתיקון.
+      {/* Main Core Content Section */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200/80 shadow-sm text-right space-y-10">
+            
+            {/* Opening Intro */}
+            <div className="border-r-4 border-blue-600 pr-5 py-1">
+              <p className="text-slate-800 text-lg md:text-xl leading-relaxed font-medium">
+                כאשר סכסוך בנוגע לליקויי בנייה מגיע לכתלי בית המשפט, על השופט להכריע בשאלות הנדסיות מובהקות - חוזק שלד, איכות איטום, עמידה בתקנים - נושאים שאינם בתחום מומחיותו המשפטית. לשם כך, המחוקק והפסיקה מכירים בצורך במומחה מטעם בית המשפט או מומחה מטעם צד, שחוות דעתו ההנדסית משמשת בסיס מקצועי להכרעה. חוות דעת הנדסית איכותית יכולה להיות ההבדל בין זכייה להפסד בתביעה.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              whileHover={{ y: -5 }}
-              className="bg-blue-50/50 p-8 rounded-3xl border border-blue-100 shadow-sm relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-br-2xl">
-                קביל משפטית
-              </div>
-              <div className="flex items-center justify-between gap-4 mb-6 mt-2">
-                <div className="text-base sm:text-lg font-bold text-rose-950 bg-white border border-slate-200/60 px-4 py-2 rounded-xl shadow-xs">
-                  תקסד״א 2018 - תקנות סדר דין אזרחי
+            {/* Grid of core topics */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              <div className="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-100 space-y-3">
+                <div className="flex items-center gap-2 text-blue-600 font-bold">
+                  <CheckCircle2 className="w-6 h-6 shrink-0" />
+                  <h3 className="text-xl font-black text-slate-900">מה הופך חוות דעת לקבילה ואפקטיבית?</h3>
                 </div>
-                <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 shadow-sm">
-                  <Scale className="w-6 h-6" />
-                </div>
+                <p className="text-slate-700 text-base leading-relaxed">
+                  חוות דעת הנדסית לבית משפט נכתבת בהתאם לפקודת הראיות [נוסח חדש], תשל&quot;א-1971, ומחייבת רמת דיוק, אובייקטיביות ותיעוד שאינה נדרשת בדוח בדק בית רגיל. חוות הדעת שאנו מכינים כוללת מיפוי מדויק של כל ליקוי, הפניה לסעיפי התקן הישראלי הרלוונטי ולתקנות התכנון והבנייה שהופרו, אומדן עלות תיקון מבוסס, ותיעוד צילומי ומכשור מקיף התומך בכל קביעה. חוות דעת שאינה מדויקת או חד משמעית עלולה להיפסל או להיחלש משמעותית בחקירה נגדית - ולכן איכות הכתיבה ההנדסית קריטית לא פחות מהממצאים עצמם.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">חוות דעת הנדסית לבית משפט</h3>
-              <p className="text-slate-600 leading-relaxed">
-                ערוכה באופן רשמי כ״חוות דעת מומחה״ לפי תקסד״א 2018 - תקנות סדר דין אזרחי חדש 2018. היא כוללת הצהרה משפטית חתומה של המהנדס, ניתוח מעמיק של התקנים והתקנות הרלוונטיים (חוק המכר, תקנות התכנון והבנייה ועוד), אומדן כספי מפורט, ומתן עדות והגנה על הממצאים במהלך חקירה נגדית בבית המשפט.
+
+              <div className="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-100 space-y-3">
+                <div className="flex items-center gap-2 text-blue-600 font-bold">
+                  <ShieldCheck className="w-6 h-6 shrink-0" />
+                  <h3 className="text-xl font-black text-slate-900">ליווי מלא לאורך ההליך המשפטי</h3>
+                </div>
+                <p className="text-slate-700 text-base leading-relaxed">
+                  השירות שלנו אינו מסתכם בהגשת מסמך. אנו מלווים אתכם ואת עורך הדין המייצג לאורך ההליך כולו: מענה לשאלות הבהרה, היערכות לחקירה נגדית, ובעת הצורך - מתן עדות מומחה בבית המשפט עצמו. אינג&apos; יוסי פרי מופיע כעד מומחה בהתאם לניסיונו המוכח ורישומו בפנקס המהנדסים והאדריכלים, מה שמעניק לחוות הדעת משקל ואמינות גבוהים בעיני בית המשפט.
+                </p>
+              </div>
+
+            </div>
+
+            {/* When needed */}
+            <div className="bg-blue-50/70 border border-blue-100 p-6 sm:p-8 rounded-2xl space-y-3">
+              <div className="flex items-center gap-2 text-blue-800 font-bold">
+                <Scale className="w-6 h-6 shrink-0" />
+                <h3 className="text-xl font-black text-slate-900">מתי נדרשת חוות דעת הנדסית?</h3>
+              </div>
+              <p className="text-slate-700 text-base leading-relaxed">
+                השירות רלוונטי בתביעות ליקויי בנייה נגד קבלנים, מחלוקות בין שכנים בנוגע לנזילות או פגיעה מבנית, תביעות ביטוח הדורשות הוכחת היקף נזק, ומחלוקות בעסקאות מכר שבהן מתגלים ליקויים לאחר המסירה. פנייה מוקדמת למומחה, עוד לפני הגשת התביעה, מאפשרת להעריך את סיכויי התביעה ולבנות אסטרטגיה מבוססת עובדות הנדסיות מוצקות.
               </p>
-            </motion.div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -652,7 +646,6 @@ const CourtExpertPage: React.FC = () => {
         </div>
       </section>
 
-      <AccessibilitySection />
       <Contact />
     </div>
   );

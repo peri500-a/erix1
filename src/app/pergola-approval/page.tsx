@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import PergolaSection from "../../components/PergolaSection";
-import Testimonials from "../../components/Testimonials";
-import AccessibilitySection from "../../components/AccessibilitySection";
 import Contact from "../../components/Contact";
 import Breadcrumbs from "../../components/Breadcrumbs";
 
@@ -34,8 +32,6 @@ export default function Page() {
            </ul>
         </div>
       </div>
-      <Testimonials />
-      <AccessibilitySection />
       <Contact />
     </div>
   );

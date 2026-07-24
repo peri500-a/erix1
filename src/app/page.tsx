@@ -18,7 +18,7 @@ export default function Home() {
       <Services />
       <WhyUs />
       <KnowledgeHub />
-      <CommonSections excludeWhyUs excludePergola />
+      <CommonSections excludeWhyUs excludePergola isHomePage />
     </main>
   );
 }

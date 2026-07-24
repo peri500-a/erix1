@@ -254,6 +254,25 @@ const KnowledgeHub: React.FC<{ initialArticleId?: string | null; preventScroll?:
                               <div className="prose prose-blue max-w-none prose-lg md:prose-xl text-slate-700 leading-[1.8]">
                                 {article.content}
                               </div>
+
+                              {/* Author E-E-A-T Bio Box */}
+                              <div className="mt-12 p-6 bg-slate-50 border border-slate-200/80 rounded-2xl flex flex-col sm:flex-row gap-5 items-center sm:items-start text-right">
+                                <div className="w-16 h-16 rounded-2xl bg-blue-600 text-white font-black text-xl flex items-center justify-center shrink-0 shadow-md border border-blue-500">
+                                  יפ
+                                </div>
+                                <div>
+                                  <div className="flex flex-wrap items-center gap-2 mb-1">
+                                    <h4 className="font-black text-slate-900 text-lg">נכתב ונבדק מקצועית ע&quot;י אינג&apos; יוסי פרי</h4>
+                                    <span className="text-xs bg-blue-100 text-blue-800 font-bold px-2.5 py-0.5 rounded-full">מהנדס רשוי</span>
+                                  </div>
+                                  <p className="text-xs text-blue-600 font-bold mb-2">
+                                    מהנדס בניין מורשה ורשום (מ.ר 78687) | מומחה בדק בית וחוות דעת הנדסית לבית משפט
+                                  </p>
+                                  <p className="text-xs text-slate-600 leading-relaxed">
+                                    בעל למעלה מ-30 שנות ניסיון מעשי בהנדסה אזרחית, ניהול פרויקטים, ביקורת מבנים ואיתור ליקויים סמויים. העיד במאות תיקים משפטיים כמומחה מוסמך מטעם בית המשפט.
+                                  </p>
+                                </div>
+                              </div>
                               
                               <div className="mt-16 flex justify-center">
                                 <button
