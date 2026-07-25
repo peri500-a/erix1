@@ -567,24 +567,14 @@ const KnowledgeHub: React.FC<{ initialArticleId?: string | null; preventScroll?:
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-700 flex items-center justify-between gap-2">
-                    <button
-                      onClick={() => toggleExpand(art.id, art.slug)}
-                      aria-expanded={expandedIds.has(art.id)}
-                      aria-controls={`article-${art.id}`}
-                      className="bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-black px-4 py-2.5 rounded-xl transition-all shadow-md flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 focus-visible:outline-none"
-                    >
-                      <span>{expandedIds.has(art.id) ? 'סגור מאמר' : 'קריאה מהירה'}</span>
-                      <ChevronDown className={`w-4 h-4 transition-transform ${expandedIds.has(art.id) ? 'rotate-180' : ''}`} />
-                    </button>
-
+                  <div className="pt-4 border-t border-slate-700 flex items-center justify-center">
                     <Link 
                       href={`/${art.slug}`}
-                      aria-label={`פתיחת המאמר ${art.title} בעמוד נפרד`}
-                      className="text-amber-300 hover:text-amber-200 text-xs sm:text-sm font-black underline flex items-center gap-1 transition-colors p-1 focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:outline-none rounded-md"
+                      aria-label={`קריאה בדף נפרד של המאמר ${art.title}`}
+                      className="bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-black px-5 py-3 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 w-full text-center focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 focus-visible:outline-none"
                     >
-                      <span>דף נפרד</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>קריאה בדף נפרד</span>
+                      <ExternalLink className="w-4 h-4" />
                     </Link>
                   </div>
                 </div>
