@@ -14,4 +14,11 @@ export interface Article {
   author: string;
   datePublished: string;
   category: string;
+  // Enhanced User Navigation & Value Trigger fields
+  readingTime?: string;
+  targetAudience?: string;
+  keyQuestion?: string;
+  valueTrigger?: string;
+  situationId?: 'contractor' | 'second-hand' | 'moisture-sealing' | 'legal' | 'pricing-renovation';
+  isFeatured?: boolean;
 }
