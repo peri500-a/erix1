@@ -674,18 +674,18 @@ export const articles: Article[] = [
         </div>
 
         {/* Section 4 */}
-        <div className="bg-slate-900 text-white p-8 rounded-3xl space-y-4 my-8">
-          <h3 className="text-2xl font-black text-blue-400">
+        <div className="not-prose bg-slate-900 text-white p-6 sm:p-8 rounded-3xl space-y-4 my-8 shadow-xl border border-slate-800">
+          <h3 className="text-xl sm:text-2xl font-black !text-blue-300 m-0">
             הגישה שלנו באריקס ביקורת מבנים
           </h3>
-          <p className="text-lg text-slate-200 leading-relaxed">
-            אנחנו לא כותבים חוות דעת משפטית לפני שבאמת נוצרה מחלוקת. כשאנחנו מבצעים בדק בית, אנחנו מפיקים דוח שממוקד במה שבאמת חשוב: <strong>תיאור ברור וממוקד של כל ליקוי, תיעוד ויזואלי מדויק, וסימון פשוט שמאפשר לכל בעל מקצוע - ללא תלות בשפת האם שלו - לזהות בדיוק מה צריך לתקן ולעשות זאת במהירות.</strong>
+          <p className="text-base sm:text-lg !text-slate-100 leading-relaxed font-normal">
+            אנחנו לא כותבים חוות דעת משפטית לפני שבאמת נוצרה מחלוקת. כשאנחנו מבצעים בדק בית, אנחנו מפיקים דוח שממוקד במה שבאמת חשוב: <strong className="!text-white font-black underline decoration-blue-400">תיאור ברור וממוקד של כל ליקוי, תיעוד ויזואלי מדויק, וסימון פשוט שמאפשר לכל בעל מקצוע - ללא תלות בשפת האם שלו - לזהות בדיוק מה צריך לתקן ולעשות זאת במהירות.</strong>
           </p>
-          <p className="text-lg text-slate-200 leading-relaxed">
+          <p className="text-base sm:text-lg !text-slate-100 leading-relaxed font-normal">
             חוות דעת עניינית ושקולה, שאינה כתובה כאיום משפטי, מובילה בפועל לתוצאה טובה יותר עבור הרוכש. כי בסופו של דבר, למה להודיע לקבלן על כוונה לתבוע אותו עוד לפני שהוא בכלל קיבל הזדמנות נעימה ומכובדת לתקן?
           </p>
-          <p className="text-lg text-slate-200 leading-relaxed">
-            רק אם וכאשר נוצרת מחלוקת אמיתית - היזם מסרב לתקן, מתעלם מהפניות, או חולק על עצם קיום הליקוי - או-אז, ורק אז, אנחנו מכינים <Link href="/חוות-דעת-הנדסית-לבית-משפט" className="text-blue-300 underline font-bold">חוות דעת הנדסית לבית משפט</Link> מלאה, קבילה משפטית, המיועדת לשמש בהליך משפטי בפועל.
+          <p className="text-base sm:text-lg !text-slate-100 leading-relaxed font-normal">
+            רק אם וכאשר נוצרת מחלוקת אמיתית - היזם מסרב לתקן, מתעלם מהפניות, או חולק על עצם קיום הליקוי - או-אז, ורק אז, אנחנו מכינים <Link href="/חוות-דעת-הנדסית-לבית-משפט" className="!text-blue-300 hover:!text-blue-200 underline font-bold">חוות דעת הנדסית לבית משפט</Link> מלאה, קבילה משפטית, המיועדת לשמש בהליך משפטי בפועל.
           </p>
         </div>
 
@@ -696,19 +696,19 @@ export const articles: Article[] = [
             הדרך שבה נכתב דוח בדק בית אינה עניין קוסמטי - היא משפיעה ישירות על מהירות התיקון, על שיתוף הפעולה של הקבלן, ועל התועלת האמיתית שתפיקו מהבדיקה. אנחנו באריקס ביקורת מבנים בחרנו במודע שלא לפעול לפי הנוסח הרווח בענף - כי אנחנו מאמינים שזה פשוט מזיק למזמין השירות. הדוח שלכם צריך לעבוד בשבילכם, לא להרשים אתכם.
           </p>
 
-          <div className="bg-blue-600 text-white p-8 rounded-2xl text-center space-y-4 shadow-xl mt-6">
-            <div className="text-2xl font-black">
+          <div className="not-prose bg-blue-600 text-white p-6 sm:p-8 rounded-2xl text-center space-y-4 shadow-xl mt-6">
+            <div className="text-xl sm:text-2xl font-black !text-white">
               זקוקים לבדק בית שבאמת יעזור לכם לקבל דירה תקינה - ולא רק דוח מרשים על הנייר?
             </div>
-            <p className="text-blue-100 text-lg">
+            <p className="!text-blue-100 text-base sm:text-lg font-normal">
               קבעו ייעוץ חינם עם אינג&apos; יוסי פרי וקבלו ליווי הנדסי מקצועי, ענייני וממקד תוצאות.
             </p>
             <div className="pt-2">
               <a 
-                href="https://wa.me/972547515142?text=%D7%A9%D7%9C%D7%95%D7%9D,%20%D7%A7%D7%A8%D7%90%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%9E%D7%90%D7%9E%D7%A8%20%D7%A2%D7%9C%20%D7%93%D7%95%D7%9 me%D7%AA%20%D7%91%D7%93%D7%A7%20%D7%91%D7%99%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%99%D7%99%D7%A2%D7%95%D7%A5"
+                href="https://wa.me/972547515142?text=%D7%A9%D7%9C%D7%95%D7%9D,%20%D7%A7%D7%A8%D7%90%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%9E%D7%90%D7%9E%D7%A8%20%D7%A2%D7%9C%20%D7%93%D7%95%D7%97%D7%95%D7%AA%20%D7%91%D7%93%D7%A7%20%D7%91%D7%99%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%99%D7%99%D7%A2%D7%95%D7%A5"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white text-blue-900 font-bold text-lg px-8 py-4 rounded-xl shadow-lg hover:bg-blue-50 transition-all"
+                className="inline-flex items-center gap-2 bg-white !text-blue-900 font-bold text-base sm:text-lg px-8 py-4 rounded-xl shadow-lg hover:bg-blue-50 transition-all"
               >
                 <span>תיאום ייעוץ אישי בוואטסאפ</span>
               </a>

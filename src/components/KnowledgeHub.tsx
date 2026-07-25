@@ -887,15 +887,21 @@ const KnowledgeHub: React.FC<{ initialArticleId?: string | null; preventScroll?:
       </div>
 
       <style>{`
-        .prose strong {
+        .prose :not(.not-prose) > strong,
+        .prose strong:not(.not-prose *) {
           color: #2563eb;
           font-weight: 800;
         }
-        .prose h3 {
+        .prose :not(.not-prose) > h3,
+        .prose h3:not(.not-prose *) {
           color: #1e293b;
           font-weight: 900;
           margin-top: 2rem;
           margin-bottom: 1rem;
+        }
+        .not-prose,
+        .not-prose * {
+          color: inherit;
         }
       `}</style>
     </section>
