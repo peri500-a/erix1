@@ -20,6 +20,8 @@ import { articles } from "../../data/articles";
 import InspectionChecklist from "../../components/InspectionChecklist";
 import ViolationsComparisonTable from "../../components/ViolationsComparisonTable";
 import ComplexBuildingDefectsPage from "../../components/ComplexBuildingDefectsPage";
+import Tama38InspectionPage from "../../components/Tama38InspectionPage";
+import ErixIndexPage from "../../components/ErixIndexPage";
 
 import { notFound, redirect } from 'next/navigation';
 
@@ -55,6 +57,9 @@ export const aliasToPrimaryMap: Record<string, string> = {
   'engineering-knowledge-hub': 'מאגר-הידע-ההנדסי',
   'pergola-approval': 'אישור-מהנדס-לפרגולה',
   'building-violations': 'איתור-חריגות-בנייה',
+  'tama-38-inspection': 'בדק-בית-תמא-38-פינוי-בינוי',
+  'tama-38-pinui-binui': 'בדק-בית-תמא-38-פינוי-בינוי',
+  'erix-index-building-defects': 'מדד-אריקס-נתוני-ליקויי-בניה',
 };
 
 const locationMapping: Record<string, string> = {
@@ -99,6 +104,10 @@ const mainPageMapping: Record<string, () => React.ReactNode> = {
   'leak-detection': () => <LeakDetectionPage />,
   'איתור-ליקויי-בנייה-מורכבים': () => <ComplexBuildingDefectsPage />,
   'complex-building-defects': () => <ComplexBuildingDefectsPage />,
+  'בדק-בית-תמא-38-פינוי-בינוי': () => <Tama38InspectionPage />,
+  'tama-38-inspection': () => <Tama38InspectionPage />,
+  'מדד-אריקס-נתוני-ליקויי-בניה': () => <ErixIndexPage />,
+  'erix-index-building-defects': () => <ErixIndexPage />,
   'חוות-דעת-הנדסית-לבית-משפט': () => <CourtExpertPage />,
   'court-expert': () => <CourtExpertPage />,
   'בדק-בית-מחיר': () => <PricingPage />,
@@ -313,6 +322,24 @@ const metadataMapping: Record<string, { title: string; description: string; keyw
   'complex-building-defects': {
     title: 'איתור ליקויי בנייה הנדסיים מורכבים (ת"י 1920) | אריקס ביקורת מבנים',
     description: 'אבחון ומיפוי ליקויי בנייה מורכבים ע"י מהנדס מוסמך בהתאם לתקן ת"י 1920. סדקים מבניים, כשלי קונסטרוקציה ובעיות בטיחות עם דוח הנדסי מחייב.',
+  },
+  'בדק-בית-תמא-38-פינוי-בינוי': {
+    title: 'בדק בית תמ"א 38 ופינוי בינוי | אריקס ביקורת מבנים - מהנדס מוסמך',
+    description: 'בדק בית לדירה בפרויקט תמ"א 38 או פינוי בינוי ע"י מהנדס מוסמך. בדיקת נקודות מפגש בין ישן לחדש, עמידה בהתחייבויות היזם ודוח הנדסי קביל בבית משפט.',
+    keywords: ['בדק בית תמ"א 38', 'בדק בית פינוי בינוי', 'בדק בית התחדשות עירונית', 'מהנדס בדק בית תמ"א 38']
+  },
+  'tama-38-inspection': {
+    title: 'בדק בית תמ"א 38 ופינוי בינוי | אריקס ביקורת מבנים - מהנדס מוסמך',
+    description: 'בדק בית לדירה בפרויקט תמ"א 38 או פינוי בינוי ע"י מהנדס מוסמך. בדיקת נקודות מפגש בין ישן לחדש, עמידה בהתחייבויות היזם ודוח הנדסי קביל בבית משפט.',
+  },
+  'מדד-אריקס-נתוני-ליקויי-בניה': {
+    title: 'מדד אריקס 2026 | ניתוח 600+ דירות חדשות מקבלן - הליקויים הנפוצים באמת',
+    description: 'ניתחנו למעלה מ-600 דוחות בדק בית טרום-מסירה בדירות חדשות מקבלן. אילו ליקויים הכי נפוצים, אילו באמת חשובים, ולמה רוב הפחדים ברשתות מוגזמים. המדד המלא של אריקס ביקורת מבנים.',
+    keywords: ['מדד אריקס', 'ליקויי בנייה נפוצים', 'בדק בית מקבלן', 'סטטיסטיקת בדק בית', 'ליקויים בדירה חדשה', 'אינג יוסי פרי']
+  },
+  'erix-index-building-defects': {
+    title: 'מדד אריקס 2026 | ניתוח 600+ דירות חדשות מקבלן - הליקויים הנפוצים באמת',
+    description: 'ניתחנו למעלה מ-600 דוחות בדק בית טרום-מסירה בדירות חדשות מקבלן. אילו ליקויים הכי נפוצים, אילו באמת חשובים, ולמה רוב הפחדים ברשתות מוגזמים. המדד המלא של אריקס ביקורת מבנים.',
   },
   'חוות-דעת-הנדסית-לבית-משפט': {
     title: 'חוות דעת הנדסית לבית משפט | מהנדס מומחה קביל משפטית - אריקס',
