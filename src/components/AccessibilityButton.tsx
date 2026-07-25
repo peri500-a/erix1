@@ -6,7 +6,7 @@ import Link from 'next/link';
 const AccessibilityButton: React.FC = () => {
   return (
     <Link
-      href="/accessibility-statement"
+      href="/הצהרת-נגישות"
       className="fixed bottom-24 right-3 md:bottom-10 md:right-10 z-[45] group flex items-center gap-1.5 md:gap-2 bg-slate-900/90 text-white hover:bg-slate-900 backdrop-blur-md px-2.5 py-1.5 md:px-4 md:py-3 rounded-full shadow-xl border border-white/20 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-400"
       aria-label="הצהרת נגישות"
       title="הצהרת נגישות"
