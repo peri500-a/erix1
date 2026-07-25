@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 import { 
   Scale, FileText, CheckCircle2, ShieldCheck, AlertTriangle, Droplet, 
   Layers, Eye, ShieldAlert, Phone, HelpCircle, Award, Search, X, 
-  Clock, ExternalLink, Target, Tag, Sparkles
+  Clock, ExternalLink, Target, Tag, Sparkles, Star, Share2, Check
 } from 'lucide-react';
 import Contact from './Contact';
 import Breadcrumbs from './Breadcrumbs';
@@ -392,6 +392,32 @@ const CourtExpertPage: React.FC = () => {
   const [selectedSituation, setSelectedSituation] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [copiedArticleSlug, setCopiedArticleSlug] = useState<string | null>(null);
+
+  const handleShare = async (title: string, path: string, slug: string) => {
+    const fullUrl = typeof window !== 'undefined' ? `${window.location.origin}${path}` : path;
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title,
+          text: title,
+          url: fullUrl,
+        });
+        return;
+      } catch {
+        // User cancelled share or non-fatal share error
+      }
+    }
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(fullUrl);
+        setCopiedArticleSlug(slug);
+        setTimeout(() => setCopiedArticleSlug(null), 2500);
+      } catch (err) {
+        console.error('Clipboard copy failed', err);
+      }
+    }
+  };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -909,19 +935,61 @@ const CourtExpertPage: React.FC = () => {
                       }
                       if (item.type === "conclusion") {
                         return (
-                          <div key={itemIdx} className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 bg-slate-50 p-6 rounded-2xl">
-                            <div className="space-y-1">
-                              <span className="text-xs font-black text-blue-800 block">סיכום והנחיה ליישום:</span>
-                              <p className="text-slate-900 font-bold text-base md:text-lg max-w-3xl leading-relaxed">
-                                {item.text}
-                              </p>
+                          <div key={itemIdx} className="space-y-6">
+                            <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 bg-slate-50 p-6 rounded-2xl">
+                              <div className="space-y-1">
+                                <span className="text-xs font-black text-blue-800 block">סיכום והנחיה ליישום:</span>
+                                <p className="text-slate-900 font-bold text-base md:text-lg max-w-3xl leading-relaxed">
+                                  {item.text}
+                                </p>
+                              </div>
+                              <a
+                                href="tel:054-7515142"
+                                className="bg-blue-800 hover:bg-blue-700 text-white font-black px-6 py-3 rounded-xl transition-all shadow-md text-center shrink-0 text-sm whitespace-nowrap self-start sm:self-center"
+                              >
+                                התייעצות מיידית: 054-7515142
+                              </a>
                             </div>
-                            <a
-                              href="tel:054-7515142"
-                              className="bg-blue-800 hover:bg-blue-700 text-white font-black px-6 py-3 rounded-xl transition-all shadow-md text-center shrink-0 text-sm whitespace-nowrap self-start sm:self-center"
-                            >
-                              התייעצות מיידית: 054-7515142
-                            </a>
+
+                            {/* Google Maps Rating & Share Actions Bar */}
+                            <div className="bg-slate-100/90 border border-slate-300 p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                              <div className="space-y-1 text-center sm:text-right">
+                                <span className="text-xs font-black text-blue-800 uppercase tracking-wider block">
+                                  אהבתם את המדריך?
+                                </span>
+                                <p className="text-xs sm:text-sm font-bold text-slate-800">
+                                  שתפו את המדריך ברשתות או פרגנו לנו בדירוג קצר בגוגל מפות!
+                                </p>
+                              </div>
+                              <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+                                <a
+                                  href="https://www.google.com/maps/place//@32.0076968,34.9659148,10z/data=!3m1!4b1!4m3!3m2!1s0x1502b359b8db2f6b:0xaad745e4d96444d3!12e1?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm px-4 py-2.5 rounded-xl transition-all shadow-xs flex items-center gap-2 border border-amber-500/40"
+                                >
+                                  <Star className="w-4 h-4 text-amber-950 fill-amber-950" />
+                                  <span>דירוג בגוגל מפות ⭐</span>
+                                </a>
+
+                                <button
+                                  onClick={() => handleShare(article.title, `/חוות-דעת-הנדסית-לבית-משפט#${article.slug}`, article.slug)}
+                                  className="bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition-all shadow-xs flex items-center gap-2 border border-slate-300 cursor-pointer"
+                                >
+                                  {copiedArticleSlug === article.slug ? (
+                                    <>
+                                      <Check className="w-4 h-4 text-emerald-600" />
+                                      <span className="text-emerald-700 font-black">הקישור הועתק!</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Share2 className="w-4 h-4 text-blue-700" />
+                                      <span>שיתוף המדריך</span>
+                                    </>
+                                  )}
+                                </button>
+                              </div>
+                            </div>
                           </div>
                         );
                       }

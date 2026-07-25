@@ -30,7 +30,10 @@ import {
   CheckCircle2,
   Building2,
   Tag,
-  MessageSquare
+  MessageSquare,
+  Star,
+  Share2,
+  Check
 } from 'lucide-react';
 import SchemaTags from './SchemaTags';
 import { articles as rawArticles } from '../data/articles';
@@ -274,6 +277,32 @@ const KnowledgeHub: React.FC<{ initialArticleId?: string | null; preventScroll?:
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
   const [selectedSituation, setSelectedSituation] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [copiedArticleId, setCopiedArticleId] = useState<string | null>(null);
+
+  const handleShare = async (title: string, path: string, id: string) => {
+    const fullUrl = typeof window !== 'undefined' ? `${window.location.origin}${path}` : path;
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title,
+          text: title,
+          url: fullUrl,
+        });
+        return;
+      } catch {
+        // User cancelled share or non-fatal share error
+      }
+    }
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(fullUrl);
+        setCopiedArticleId(id);
+        setTimeout(() => setCopiedArticleId(null), 2500);
+      } catch (err) {
+        console.error('Clipboard copy failed', err);
+      }
+    }
+  };
 
   // Combine raw articles with enrichment metadata
   const articles: Article[] = useMemo(() => {
@@ -788,6 +817,46 @@ const KnowledgeHub: React.FC<{ initialArticleId?: string | null; preventScroll?:
                                     <MessageSquare className="w-4 h-4" />
                                     <span>ייעוץ אישי בוואטסאפ</span>
                                   </a>
+                                </div>
+
+                                {/* Google Maps Rating & Article Share Actions Bar */}
+                                <div className="bg-slate-100/90 border border-slate-300 p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                                  <div className="space-y-1 text-center sm:text-right">
+                                    <span className="text-xs font-black text-slate-700 uppercase tracking-wider block">
+                                      אהבתם את המאמר?
+                                    </span>
+                                    <p className="text-xs sm:text-sm font-bold text-slate-800">
+                                      שתפו אותו ברשתות או פרגנו לנו בדירוג קצר בגוגל מפות!
+                                    </p>
+                                  </div>
+                                  <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+                                    <a
+                                      href="https://www.google.com/maps/place//@32.0076968,34.9659148,10z/data=!3m1!4b1!4m3!3m2!1s0x1502b359b8db2f6b:0xaad745e4d96444d3!12e1?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D"
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm px-4 py-2.5 rounded-xl transition-all shadow-xs flex items-center gap-2 border border-amber-500/40"
+                                    >
+                                      <Star className="w-4 h-4 text-amber-950 fill-amber-950" />
+                                      <span>דירוג בגוגל מפות ⭐</span>
+                                    </a>
+
+                                    <button
+                                      onClick={() => handleShare(article.title, `/${article.id}`, article.id)}
+                                      className="bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition-all shadow-xs flex items-center gap-2 border border-slate-300 cursor-pointer"
+                                    >
+                                      {copiedArticleId === article.id ? (
+                                        <>
+                                          <Check className="w-4 h-4 text-emerald-600" />
+                                          <span className="text-emerald-700 font-black">הקישור הועתק!</span>
+                                        </>
+                                      ) : (
+                                        <>
+                                          <Share2 className="w-4 h-4 text-blue-700" />
+                                          <span>שיתוף המאמר</span>
+                                        </>
+                                      )}
+                                    </button>
+                                  </div>
                                 </div>
 
                                 {/* Collapse / Back to top button */}
