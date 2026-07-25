@@ -570,11 +570,6 @@ export default function ErixIndexPage() {
       {/* Common Sections */}
       <CommonSections />
 
-      {/* Contact Section */}
-      <section id="contact" className="py-16 bg-slate-900">
-        <Contact />
-      </section>
-
       {/* Modal Form */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <div className="p-2">
