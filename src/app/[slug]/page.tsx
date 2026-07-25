@@ -61,6 +61,18 @@ export const aliasToPrimaryMap: Record<string, string> = {
   'tama-38-pinui-binui': 'בדק-בית-תמא-38-פינוי-בינוי',
   'erix-index-building-defects': 'מדד-אריקס-נתוני-ליקויי-בניה',
   'cumbersome-inspection-reports': 'למה-דוחות-בדק-בית-מסורבלים',
+  
+  // Court Guides Slugs
+  'importance-of-expert-identity': 'חוות-דעת-הנדסית-לבית-משפט',
+  'small-claims-and-neighbors-disputes': 'חוות-דעת-הנדסית-לבית-משפט',
+  'counter-expert-opinion': 'חוות-דעת-הנדסית-לבית-משפט',
+  'counterclaim-construction-disputes': 'חוות-דעת-הנדסית-לבית-משפט',
+  'duty-to-mitigate-damage': 'חוות-דעת-הנדסית-לבית-משפט',
+  'damage-in-kind-and-repair': 'חוות-דעת-הנדסית-לבית-משפט',
+  'bill-of-quantities-in-lawsuit': 'חוות-דעת-הנדסית-לבית-משפט',
+  'site-work-logbook-value': 'חוות-דעת-הנדסית-לבית-משפט',
+  'mahut-meeting-engineering-prep': 'חוות-דעת-הנדסית-לבית-משפט',
+  'court-experts-list': 'חוות-דעת-הנדסית-לבית-משפט',
 };
 
 const locationMapping: Record<string, string> = {

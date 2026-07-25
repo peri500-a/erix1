@@ -1,19 +1,50 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { Scale, FileText, CheckCircle2, ShieldCheck, AlertTriangle, Droplet, Layers, Eye, ShieldAlert, Phone, HelpCircle, Award } from 'lucide-react';
+import { 
+  Scale, FileText, CheckCircle2, ShieldCheck, AlertTriangle, Droplet, 
+  Layers, Eye, ShieldAlert, Phone, HelpCircle, Award, Search, X, 
+  Clock, ExternalLink, Target, Tag, Sparkles
+} from 'lucide-react';
 import Contact from './Contact';
 import Breadcrumbs from './Breadcrumbs';
 import SchemaTags from './SchemaTags';
 
-const courtArticles = [
+export interface CourtArticle {
+  title: string;
+  slug: string;
+  tagline: string;
+  icon: string;
+  readingTime: string;
+  category: string;
+  targetAudience: string;
+  keyQuestion: string;
+  valueTrigger: string;
+  situationId: 'before_lawsuit' | 'small_claims' | 'defense_counter' | 'boq_procedure';
+  tags: string[];
+  content: Array<{
+    type: string;
+    text?: string;
+    links?: Array<{ href: string; label: string }>;
+    items?: Array<{ bold: string; text: string }>;
+  }>;
+}
+
+const courtArticles: CourtArticle[] = [
   {
     title: "חשיבות זהות המומחה בהליכים משפטיים בענף הבנייה",
     slug: "importance-of-expert-identity",
     tagline: "בסכסוכי בנייה וליקויים, השופט המנהל את התיק נעזר כמעט תמיד באנשי מקצוע שישמשו עבורו כ\"עיניים המקצועיות\" בשטח. לזהות המהנדס שאתם שוכרים ולניסיון שלו יש השפעה דרמטית על המשקל שבית המשפט יעניק לממצאים.",
     icon: "ShieldCheck",
+    readingTime: "4 דק' קריאה",
+    category: "זהות המומחה והליך משפטי",
+    targetAudience: "תובעים ונתבעים",
+    keyQuestion: "איזה משקל מעניק השופט לזהות המהנדס ולניסיון המעשי שלו בליטיגציה?",
+    valueTrigger: "גלו מדוע הרישום בפנקס המהנדסים, הניסיון בעדות מומחה והיכרות עם תקסד״א קובעים את גורל התיק.",
+    situationId: "before_lawsuit",
+    tags: ["זהות המומחה", "תקסד״א", "עדות מומחה", "אמינות הנדסית"],
     content: [
       {
         type: "heading",
@@ -46,6 +77,13 @@ const courtArticles = [
     slug: "small-claims-and-neighbors-disputes",
     tagline: "לא כל סכסוך הנדסי חייב להתנהל בבתי המשפט המחוזיים או השלום בהליכים שנמשכים שנים. במקרים שבהם סכום התביעה מוגבל (כגון כשל מקומי או סכסוך שכנים נקודתי), מסלול התביעות הקטנות מציע פתרון מהיר ויעיל – בתנאי שמגיעים מוכנים.",
     icon: "HelpCircle",
+    readingTime: "3 דק' קריאה",
+    category: "תביעות קטנות וסכסוכי שכנים",
+    targetAudience: "בעלי דירות ושכנים",
+    keyQuestion: "איך מגישים חוות דעת הנדסית לבית משפט לתביעות קטנות ללא עורך דין?",
+    valueTrigger: "כיצד לבסס תביעה מהירה מול שכן או קבלן, להתמודד מול טענות נגדיות ולהשיג פיצוי מלא.",
+    situationId: "small_claims",
+    tags: ["תביעות קטנות", "סכסוכי שכנים", "נזקי מים", "הוכחת נזק"],
     content: [
       {
         type: "heading",
@@ -74,6 +112,13 @@ const courtArticles = [
     slug: "counter-expert-opinion",
     tagline: "בסכסוכי בנייה וליקויי דירות, הנתבעים מגישים כמעט תמיד חוות דעת הנדסית נגדית במטרה לגמד, להסתיר או לפסול את הליקויים שלכם. כדי להגן על זכויותיכם, נדרשת היערכות טקטית ודוח תגובה הנדסי ממוקד.",
     icon: "Scale",
+    readingTime: "4 דק' קריאה",
+    category: "הפרכת טענות ודוח נגדי",
+    targetAudience: "תובעים מול קבלנים",
+    keyQuestion: "כיצד מומחה הנתבע מנסה לצמצם את הפיצוי שלכם ואיך מפריכים את טענותיו?",
+    valueTrigger: "למדו איך מזהים כשלי אבחון בחוות דעת הקבלן ומכינים כתב שאלות הבהרה הנדסי מוחץ.",
+    situationId: "defense_counter",
+    tags: ["מומחה נגדי", "הפרכת טענות", "שאלות הבהרה", "כשלי אבחון"],
     content: [
       {
         type: "heading",
@@ -98,6 +143,13 @@ const courtArticles = [
     slug: "counterclaim-construction-disputes",
     tagline: "סכסוכים רבים מתחילים כאשר קבלן או שיפוצניק תובע דייר על 'אי-תשלום יתרת חוב'. במקרים רבים, הגנת הדייר הטובה ביותר היא התקפה בדמות תביעה שכנגד המגובה בחוות דעת הנדסית חסרת פשרות.",
     icon: "ShieldAlert",
+    readingTime: "4 דק' קריאה",
+    category: "תביעה שכנגד וניהול סיכונים",
+    targetAudience: "מזמיני עבודה ומשפצים",
+    keyQuestion: "מה עושים כשהקבלן תובע אתכם על אי-תשלום למרות ביצוע לקוי ורשלני?",
+    valueTrigger: "איך להשתמש בחוות דעת הנדסית כדי להגיש תביעה שכנגד ולהפוך את מאזן הכוחות המשפטי.",
+    situationId: "defense_counter",
+    tags: ["תביעה שכנגד", "אי תשלום", "שיפוץ לקוי", "מפרט חוזי"],
     content: [
       {
         type: "heading",
@@ -122,6 +174,13 @@ const courtArticles = [
     slug: "duty-to-mitigate-damage",
     tagline: "אחד הכללים הנוקשים והחשובים ביותר במשפט האזרחי הוא חובת הקטנת הנזק. בעלי נכסים רבים נמנעים מלבצע פעולות דחופות מחשש 'להעלים ראיות', ובכך מסתכנים בפסילת חלק ניכר מהפיצויים שלהם.",
     icon: "Droplet",
+    readingTime: "3 דק' קריאה",
+    category: "חובת זהירות ותיעוד",
+    targetAudience: "בעלי נכסים שנפגעו",
+    keyQuestion: "איך לפעול לעצירת הנזק הקיים בלי לפגוע בראיות המשפטיות בתביעה?",
+    valueTrigger: "גלו איך לתעד ליקוי דחוף באמצעות צילום תרמי ודוח ביניים קביל לפני ביצוע תיקון חירום.",
+    situationId: "before_lawsuit",
+    tags: ["הקטנת הנזק", "צילום תרמי", "תיעוד בזמן אמת", "דוח ביניים"],
     content: [
       {
         type: "heading",
@@ -146,6 +205,13 @@ const courtArticles = [
     slug: "damage-in-kind-and-repair",
     tagline: "במשפטי ליקויי בנייה, בית המשפט מתחבט בשאלה: האם להורות על ביצוע תיקון פיזי בפועל (תיקון נזק בעין) או לפסוק פיצוי כספי המגלם ירידת ערך של הדירה? הבנת מונחים אלו קריטית לקבלת ההחלטות בתיק.",
     icon: "Layers",
+    readingTime: "4 דק' קריאה",
+    category: "אומדן כספי וירידת ערך",
+    targetAudience: "תובעים ונתבעים",
+    keyQuestion: "מתי בית המשפט יורה על תיקון פיזי בפועל ומתי יפסוק פיצוי בגין ירידת ערך?",
+    valueTrigger: "הבחינו בין נזק ניתן לתיקון לבין ליקוי בלתי הפיך (גובה תקרה, רוחב פרוזדור) המזכה בפיצוי כספי.",
+    situationId: "defense_counter",
+    tags: ["ירידת ערך", "נזק בעין", "ליקוי בלתי הפיך", "פיצוי כספי"],
     content: [
       {
         type: "heading",
@@ -170,6 +236,13 @@ const courtArticles = [
     slug: "bill-of-quantities-in-lawsuit",
     tagline: "חוות דעת הנדסית ללא כתב כמויות מפורט ומבוסס היא כמו כתב תביעה ללא סכום מוגדר. כדי ששופט או מומחה מטעם בית משפט יאמצו את דרישותיכם, חובה להציג בפניהם כתב כמויות מקצועי ומפורט.",
     icon: "FileText",
+    readingTime: "3 דק' קריאה",
+    category: "כתב כמויות ותמחור",
+    targetAudience: "עורכי דין ובעלי נכסים",
+    keyQuestion: "למה חוות דעת ללא כתב כמויות מפורט חשופה לטענות על אומדן מנופח?",
+    valueTrigger: "למדו איך כתב כמויות המבוסס על מחירון דקל רשמי מבטיח את אימוץ העלויות ע\"י השופט.",
+    situationId: "boq_procedure",
+    tags: ["כתב כמויות", "מחירון דקל", "אומדן תיקונים", "תמחור הנדסי"],
     content: [
       {
         type: "heading",
@@ -194,6 +267,13 @@ const courtArticles = [
     slug: "site-work-logbook-value",
     tagline: "במהלך פרויקט בנייה, יומן העבודה הוא הראיה התיעודית החשובה ביותר שמתנהלת בזמן אמת. כאשר פורץ סכסוך, ניתוח הנדסי של יומן העבודה יכול להכריע את התיק כולו.",
     icon: "Layers",
+    readingTime: "4 דק' קריאה",
+    category: "ראיות וביקורת באתר",
+    targetAudience: "יזמים, דיירים ועורכי דין",
+    keyQuestion: "איך ניתוח הנדסי של יומן העבודה בזמן אמת מכריע טענות על איחורים וליקויים?",
+    valueTrigger: "גלו איך הקופסה השחורה של פרויקט הבנייה הופכת טענות בעל פה להוכחות חד-משמעיות.",
+    situationId: "boq_procedure",
+    tags: ["יומן עבודה", "ראיות בזמן אמת", "ליקויי ביצוע", "פיקוח צמוד"],
     content: [
       {
         type: "heading",
@@ -218,6 +298,13 @@ const courtArticles = [
     slug: "mahut-meeting-engineering-prep",
     tagline: "פגישת מהו״ת (מידע, היכרות ותיאום) היא שלב חובה כמעט בכל תביעה אזרחית המוגשת לבית משפט השלום. בסכסוכי בנייה, פגישה זו מהווה הזדמנות קריטית לפתרון יעיל – בתנאי שמגיעים אליה עם גיבוי הנדסי נכון.",
     icon: "HelpCircle",
+    readingTime: "3 דק' קריאה",
+    category: "פגישת מהו״ת וגישור",
+    targetAudience: "צדדים להליך אזרחי",
+    keyQuestion: "איך להגיע לפגישת מהו״ת ראשונית עם יתרון הנדסי שמביא לפשרה מהירה ומטיבה?",
+    valueTrigger: "הבינו כיצד חוות דעת מוקדמת מטה את מאזן הכוחות כבר במפגש הגישור וחוסכת הליך ממושך.",
+    situationId: "boq_procedure",
+    tags: ["פגישת מהות", "גישור הנדסי", "סדר דין אזרחי", "הסדר פשרה"],
     content: [
       {
         type: "heading",
@@ -242,6 +329,13 @@ const courtArticles = [
     slug: "court-experts-list",
     tagline: "בתי המשפט על פי תקנותיהם מאשרים רשימה של מומחים שנבחנו ונמצאו מתאימים ליתן חוות דעת. אינג' יוסי פרי מצוי ברשימה זו ומעמיד לרשותכם את הניסיון וההכרה המקצועית הגבוהה ביותר.",
     icon: "Award",
+    readingTime: "3 דק' קריאה",
+    category: "הסמכה ורישום רשמי",
+    targetAudience: "בעלי דירות ועורכי דין",
+    keyQuestion: "איך מוודאים שהמהנדס ששכרתם מופיע ברשימות המומחים המאושרות של הנהלת בתי המשפט?",
+    valueTrigger: "עיון בהסמכות הרשמיות, פנקס המהנדסים וקישורים ישירים לרשימות הממשלתיות המעודכנות.",
+    situationId: "before_lawsuit",
+    tags: ["רשימת מומחים", "הנהלת בתי המשפט", "מהנדס רשום", "הסמכה משפטית"],
     content: [
       {
         type: "heading",
@@ -281,8 +375,24 @@ const courtArticles = [
   }
 ];
 
+const SITUATION_FILTERS = [
+  { id: 'all', label: 'כל 10 המדריכים', icon: Target, count: 10 },
+  { id: 'before_lawsuit', label: 'לפני תביעה וזהות המומחה', icon: ShieldCheck, count: 3 },
+  { id: 'small_claims', label: 'תביעות קטנות וסכסוכי שכנים', icon: Scale, count: 2 },
+  { id: 'defense_counter', label: 'הפרכת דוח נגדי ותביעה שכנגד', icon: ShieldAlert, count: 3 },
+  { id: 'boq_procedure', label: 'כתב כמויות, יומנים וגישור', icon: FileText, count: 3 },
+];
+
+const POPULAR_TAGS = [
+  "תביעות קטנות", "מומחה נגדי", "כתב כמויות", "יומן עבודה", 
+  "פגישת מהות", "ירידת ערך", "תביעה שכנגד", "רשימת מומחים"
+];
 
 const CourtExpertPage: React.FC = () => {
+  const [selectedSituation, setSelectedSituation] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
@@ -305,6 +415,37 @@ const CourtExpertPage: React.FC = () => {
       a: 'במרבית תיקי ליקויי הבנייה, לאחר הגשת חוות הדעת של תובע ונתבע, ממנה בית המשפט מהנדס מוחלט מטעמו שיבחן את הנושא באופן אובייקטיבי. מהנדס מטעמכם (אריקס ביקורת מבנים) פועל כיועץ הנדסי-טקטי עבור עורך הדין שלכם: אנו מכינים את השאלות לחקירתו הנגדית של מומחה בית המשפט, ובודקים שדוח המומחה הציבורי אינו מתעלם מתקנים משמעותיים.'
     }
   ];
+
+  // Filtered articles
+  const filteredArticles = useMemo(() => {
+    return courtArticles.filter((article) => {
+      // 1. Situation filter
+      if (selectedSituation !== 'all' && article.situationId !== selectedSituation) {
+        return false;
+      }
+      // 2. Tag filter
+      if (selectedTag && !article.tags.some(t => t.includes(selectedTag))) {
+        return false;
+      }
+      // 3. Search query
+      if (searchQuery.trim()) {
+        const query = searchQuery.trim().toLowerCase();
+        const matchTitle = article.title.toLowerCase().includes(query);
+        const matchTagline = article.tagline.toLowerCase().includes(query);
+        const matchQuestion = article.keyQuestion.toLowerCase().includes(query);
+        const matchValue = article.valueTrigger.toLowerCase().includes(query);
+        const matchTags = article.tags.some(t => t.toLowerCase().includes(query));
+        return matchTitle || matchTagline || matchQuestion || matchValue || matchTags;
+      }
+      return true;
+    });
+  }, [selectedSituation, selectedTag, searchQuery]);
+
+  const handleResetFilters = () => {
+    setSelectedSituation('all');
+    setSearchQuery('');
+    setSelectedTag(null);
+  };
 
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen selection:bg-blue-500/30 text-right font-sans">
@@ -442,98 +583,257 @@ const CourtExpertPage: React.FC = () => {
                   <h3 className="text-xl font-black text-slate-900">מה הופך חוות דעת לקבילה ואפקטיבית?</h3>
                 </div>
                 <p className="text-slate-700 text-base leading-relaxed">
-                  חוות דעת הנדסית לבית משפט נכתבת בהתאם לפקודת הראיות [נוסח חדש], תשל&quot;א-1971, ומחייבת רמת דיוק, אובייקטיביות ותיעוד שאינה נדרשת בדוח בדק בית רגיל. חוות הדעת שאנו מכינים כוללת מיפוי מדויק של כל ליקוי, הפניה לסעיפי התקן הישראלי הרלוונטי ולתקנות התכנון והבנייה שהופרו, אומדן עלות תיקון מבוסס, ותיעוד צילומי ומכשור מקיף התומך בכל קביעה. חוות דעת שאינה מדויקת או חד משמעית עלולה להיפסל או להיחלש משמעותית בחקירה נגדית - ולכן איכות הכתיבה ההנדסית קריטית לא פחות מהממצאים עצמם.
+                  חוות דעת הנדסית לבית משפט נכתבת בהתאם לפקודת הראיות [נוסח חדש], תשל&quot;א-1971, ומחייבת רמת דיוק, אובייקטיביות ותיעוד שאינה נדרשת בדוח בדק בית רגיל. חוות הדעת שאנו מכינים כוללת מיפוי מדויק של כל ליקוי, הפניה לסעיפי התקן הישראלי הרלוונטי ולתקנות התכנון והבנייה שהופרו, אומדן עלות תיקון מבוסס, ותיעוד צילומי ומכשור מקיף התומך בכל קביעה.
                 </p>
               </div>
 
               <div className="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-100 space-y-3">
                 <div className="flex items-center gap-2 text-blue-600 font-bold">
                   <ShieldCheck className="w-6 h-6 shrink-0" />
-                  <h3 className="text-xl font-black text-slate-900">ליווי מלא לאורך ההליך המשפטי</h3>
+                  <h3 className="text-xl font-black text-slate-900">ניסיון ועמידה בחקירה נגדית</h3>
                 </div>
                 <p className="text-slate-700 text-base leading-relaxed">
-                  השירות שלנו אינו מסתכם בהגשת מסמך. אנו מלווים אתכם ואת עורך הדין המייצג לאורך ההליך כולו: מענה לשאלות הבהרה, היערכות לחקירה נגדית, ובעת הצורך - מתן עדות מומחה בבית המשפט עצמו. אינג&apos; יוסי פרי מופיע כעד מומחה בהתאם לניסיונו המוכח ורישומו בפנקס המהנדסים והאדריכלים, מה שמעניק לחוות הדעת משקל ואמינות גבוהים בעיני בית המשפט.
+                  מהנדסי אריקס ביקורת מבנים בעלי ניסיון רב בהופעה על דוכן העדים בבתי משפט ובבוררויות. אנו מעניקים גב מקצועי מלא לעורכי הדין ומגנים בנחישות על הממצאים בחקירות נגדיות.
                 </p>
               </div>
 
             </div>
-
-            {/* When needed */}
-            <div className="bg-blue-50/70 border border-blue-100 p-6 sm:p-8 rounded-2xl space-y-3">
-              <div className="flex items-center gap-2 text-blue-800 font-bold">
-                <Scale className="w-6 h-6 shrink-0" />
-                <h3 className="text-xl font-black text-slate-900">מתי נדרשת חוות דעת הנדסית?</h3>
-              </div>
-              <p className="text-slate-700 text-base leading-relaxed">
-                השירות רלוונטי בתביעות ליקויי בנייה נגד קבלנים, מחלוקות בין שכנים בנוגע לנזילות או פגיעה מבנית, תביעות ביטוח הדורשות הוכחת היקף נזק, ומחלוקות בעסקאות מכר שבהן מתגלים ליקויים לאחר המסירה. פנייה מוקדמת למומחה, עוד לפני הגשת התביעה, מאפשרת להעריך את סיכויי התביעה ולבנות אסטרטגיה מבוססת עובדות הנדסיות מוצקות.
-              </p>
-            </div>
-
           </div>
         </div>
       </section>
 
-
-
-      {/* Professional Knowledge Hub */}
-      <section className="py-20 bg-slate-50 border-t border-slate-200/60">
+      {/* Redesigned 10 Guides Knowledge Section */}
+      <section id="guides-hub" className="py-20 bg-slate-100/80 border-t border-slate-200/80 relative" role="region" aria-label="מדריכים מקצועיים לבית משפט">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-600 px-4 py-2 rounded-full text-xs font-black tracking-widest mb-4 uppercase">
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+          
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-2 bg-blue-700 text-white px-4 py-2 rounded-full text-xs font-black tracking-widest mb-4 uppercase shadow-sm">
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
               ספריית ידע וליטיגציה הנדסית
             </span>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight">
-              מדריכים מקצועיים <br />
-              <span className="text-blue-600">חוות דעת הנדסית לבית משפט</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 leading-tight">
+              10 המדריכים המרכזיים — <br />
+              <span className="text-blue-700">חוות דעת הנדסית לבית משפט</span>
             </h2>
-            <p className="text-slate-500 mt-4 max-w-2xl mx-auto text-base md:text-lg font-medium">
-              ריכוז מאמרים מקצועיים מאת יוסי פרי, מהנדס אזרחי רשוי. כל המידע שצריך כדי לבסס תיק תביעה מנצח בערכאות משפטיות.
+            <p className="text-slate-700 mt-4 max-w-3xl mx-auto text-base md:text-lg font-medium leading-relaxed">
+              ריכוז המדריכים המשפטיים-הנדסיים מאת אינג׳ יוסי פרי, מהנדס בניין מורשה ומומחה מטעם בית המשפט. מצאו את המדריך המדויק לשלב המשפטי שלכם.
             </p>
           </div>
 
-          {/* Quick Index / Table of Contents */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-16">
-            {courtArticles.map((article, idx) => {
-              const IconComponent = article.icon === "Droplet" ? Droplet :
-                                    article.icon === "Scale" ? Scale :
-                                    article.icon === "ShieldCheck" ? ShieldCheck :
-                                    article.icon === "AlertTriangle" ? AlertTriangle :
-                                    article.icon === "ShieldAlert" ? ShieldAlert :
-                                    article.icon === "Layers" ? Layers :
-                                    article.icon === "FileText" ? FileText :
-                                    article.icon === "Award" ? Award :
-                                    HelpCircle;
-              return (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    const el = document.getElementById(article.slug);
-                    if (el) {
-                      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                  }}
-                  className="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs hover:shadow-md hover:border-blue-200 transition-all text-right group flex flex-col justify-between h-full cursor-pointer text-right"
-                >
-                  <div>
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                      <IconComponent className="w-5 h-5 shrink-0" />
-                    </div>
-                    <span className="text-xs text-slate-400 font-bold block mb-1">מדריך {idx + 1}</span>
-                    <h3 className="font-bold text-slate-800 text-sm leading-snug group-hover:text-blue-600 transition-colors">
-                      {article.title}
-                    </h3>
-                  </div>
-                  <span className="text-blue-600 text-xs font-black mt-4 flex items-center gap-1 group-hover:translate-x-[-4px] transition-transform">
-                    ◀ קרא עוד
-                  </span>
-                </button>
-              );
-            })}
+          {/* Interactive Situation Filter Buttons */}
+          <div className="mb-8" role="region" aria-label="סינון לפי שלב בסכסוך">
+            <div className="flex flex-wrap justify-center gap-3">
+              {SITUATION_FILTERS.map((s) => {
+                const FilterIcon = s.icon;
+                const isActive = selectedSituation === s.id;
+                return (
+                  <button
+                    key={s.id}
+                    onClick={() => {
+                      setSelectedSituation(s.id);
+                      setSelectedTag(null);
+                    }}
+                    className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-black transition-all cursor-pointer border ${
+                      isActive
+                        ? 'bg-blue-800 text-white border-blue-900 shadow-md scale-105'
+                        : 'bg-white text-slate-900 hover:bg-slate-50 border-slate-200 shadow-xs'
+                    }`}
+                    aria-pressed={isActive}
+                  >
+                    <FilterIcon className={`w-4 h-4 ${isActive ? 'text-amber-300' : 'text-blue-700'}`} />
+                    <span>{s.label}</span>
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${
+                      isActive ? 'bg-blue-900 text-amber-300 font-extrabold' : 'bg-slate-100 text-slate-700'
+                    }`}>
+                      {s.count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Articles Stack */}
-          <div className="space-y-12">
+          {/* Search Input & Tag Chips Bar */}
+          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm mb-12 max-w-4xl mx-auto space-y-4" role="search">
+            <div className="relative">
+              <Search className="w-5 h-5 text-slate-400 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="חפשו לפי נושא, מילת מפתח (למשל: תביעות קטנות, דוח נגדי, כתב כמויות)..."
+                className="w-full pr-12 pl-10 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-950 font-medium placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:bg-white text-right"
+                aria-label="חיפוש במדריכים משפטיים"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 p-1"
+                  aria-label="איפוס חיפוש"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+
+            {/* Quick Tag Chips */}
+            <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100">
+              <span className="text-xs font-black text-slate-700 flex items-center gap-1 shrink-0">
+                <Tag className="w-3.5 h-3.5 text-blue-700" />
+                נושאים נפוצים:
+              </span>
+              {POPULAR_TAGS.map((tag) => {
+                const isSelected = selectedTag === tag;
+                return (
+                  <button
+                    key={tag}
+                    onClick={() => {
+                      if (isSelected) {
+                        setSelectedTag(null);
+                      } else {
+                        setSelectedTag(tag);
+                      }
+                    }}
+                    className={`text-xs px-3 py-1.5 rounded-xl font-bold transition-all border cursor-pointer ${
+                      isSelected
+                        ? 'bg-blue-700 text-white border-blue-800'
+                        : 'bg-slate-100 text-slate-800 hover:bg-slate-200 border-slate-200'
+                    }`}
+                  >
+                    #{tag}
+                  </button>
+                );
+              })}
+
+              {(searchQuery || selectedSituation !== 'all' || selectedTag) && (
+                <button
+                  onClick={handleResetFilters}
+                  className="text-xs font-black text-blue-700 hover:underline mr-auto border-r border-slate-200 pr-3 cursor-pointer"
+                >
+                  איפוס סינון ({filteredArticles.length} תוצאות)
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Results Grid */}
+          {filteredArticles.length === 0 ? (
+            <div className="bg-white p-12 rounded-3xl text-center border border-slate-200 max-w-xl mx-auto space-y-4">
+              <AlertTriangle className="w-12 h-12 text-amber-500 mx-auto" />
+              <h3 className="text-xl font-black text-slate-950">לא נמצאו מדריכים מתאימים</h3>
+              <p className="text-slate-600 text-sm">נסו לשנות את מילת החיפוש או לאפס את המסננים.</p>
+              <button
+                onClick={handleResetFilters}
+                className="bg-blue-800 text-white font-black px-6 py-2.5 rounded-xl text-sm hover:bg-blue-700 transition-all cursor-pointer"
+              >
+                איפוס כל המסננים
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+              {filteredArticles.map((article, idx) => {
+                const IconComponent = article.icon === "Droplet" ? Droplet :
+                                      article.icon === "Scale" ? Scale :
+                                      article.icon === "ShieldCheck" ? ShieldCheck :
+                                      article.icon === "AlertTriangle" ? AlertTriangle :
+                                      article.icon === "ShieldAlert" ? ShieldAlert :
+                                      article.icon === "Layers" ? Layers :
+                                      article.icon === "FileText" ? FileText :
+                                      article.icon === "Award" ? Award :
+                                      HelpCircle;
+
+                const originalIndex = courtArticles.findIndex(a => a.slug === article.slug) + 1;
+
+                return (
+                  <div
+                    key={article.slug}
+                    className="bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden group hover:border-blue-300"
+                  >
+                    <div className="p-6 sm:p-8 space-y-5">
+                      
+                      {/* Top Badges Bar */}
+                      <div className="flex items-center justify-between flex-wrap gap-2">
+                        <span className="bg-amber-400 text-slate-950 text-xs font-black px-3 py-1 rounded-full shadow-2xs">
+                          מדריך {originalIndex} מתוך 10
+                        </span>
+                        <div className="flex items-center gap-2 text-xs font-bold text-slate-600">
+                          <Clock className="w-3.5 h-3.5 text-blue-700" />
+                          <span>{article.readingTime}</span>
+                        </div>
+                      </div>
+
+                      {/* Header with Icon & Category */}
+                      <div className="flex items-start gap-3">
+                        <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-800 flex items-center justify-center shrink-0 border border-blue-100 group-hover:bg-blue-800 group-hover:text-white transition-colors">
+                          <IconComponent className="w-6 h-6" />
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-xs font-black text-blue-800 uppercase tracking-wider block">
+                            {article.category}
+                          </span>
+                          <span className="text-xs font-bold text-slate-500 block">
+                            קהל יעד: {article.targetAudience}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-lg sm:text-xl font-black text-slate-950 leading-snug group-hover:text-blue-800 transition-colors">
+                        {article.title}
+                      </h3>
+
+                      {/* Key Question Box */}
+                      <div className="bg-amber-50/80 p-4 rounded-2xl border border-amber-200/80 text-right space-y-1">
+                        <span className="text-xs font-black text-amber-900 flex items-center gap-1.5">
+                          ❓ השאלה המרכזית:
+                        </span>
+                        <p className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                          {article.keyQuestion}
+                        </p>
+                      </div>
+
+                      {/* Value Trigger */}
+                      <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 space-y-1">
+                        <span className="text-xs font-black text-blue-800 flex items-center gap-1">
+                          <Sparkles className="w-3.5 h-3.5 text-blue-700" />
+                          מה תגלו במדריך?
+                        </span>
+                        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+                          {article.valueTrigger}
+                        </p>
+                      </div>
+
+                    </div>
+
+                    {/* Card Footer Action Bar - NO Quick Read Button, ONLY 'קריאה בדף נפרד' */}
+                    <div className="px-6 py-4 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between gap-3">
+                      <Link
+                        href={`/חוות-דעת-הנדסית-לבית-משפט#${article.slug}`}
+                        className="w-full bg-blue-800 hover:bg-blue-700 text-white font-black py-3 px-4 rounded-xl text-xs sm:text-sm transition-all shadow-xs flex items-center justify-center gap-2"
+                      >
+                        <span>קריאה בדף נפרד</span>
+                        <ExternalLink className="w-4 h-4 shrink-0 text-amber-300" />
+                      </Link>
+                    </div>
+
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Full Detailed Articles Stack */}
+          <div className="mt-20 space-y-16">
+            <div className="text-center space-y-3 mb-10">
+              <h3 className="text-2xl sm:text-3xl font-black text-slate-950">
+                תוכן מלא — 10 המדריכים המקצועיים
+              </h3>
+              <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
+                תוכלו לעיין בכל אחד מ-10 המדריכים המלאים ישירות כאן למטה או לעבור לדף נפרד.
+              </p>
+            </div>
+
             {courtArticles.map((article, idx) => {
               const IconComponent = article.icon === "Droplet" ? Droplet :
                                     article.icon === "Scale" ? Scale :
@@ -544,87 +844,81 @@ const CourtExpertPage: React.FC = () => {
                                     article.icon === "FileText" ? FileText :
                                     article.icon === "Award" ? Award :
                                     HelpCircle;
+
               return (
-                <div
-                  key={idx}
+                <article
+                  key={article.slug}
                   id={article.slug}
-                  className="bg-white p-8 md:p-12 rounded-3xl border border-slate-100 shadow-xs scroll-mt-24 relative overflow-hidden"
+                  className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm scroll-mt-28 relative overflow-hidden"
                 >
-                  {/* Decorative background badge */}
-                  <div className="absolute top-0 left-0 bg-blue-600 text-white text-[11px] font-black uppercase tracking-wider px-4 py-2 rounded-br-2xl">
-                    מדריך מומחה {idx + 1}
+                  {/* Badge */}
+                  <div className="absolute top-0 left-0 bg-blue-800 text-white text-[11px] font-black uppercase tracking-wider px-4 py-2 rounded-br-2xl shadow-2xs">
+                    מדריך מומחה {idx + 1} מתוך 10
                   </div>
 
                   <div className="flex items-center gap-4 mb-6 mt-4">
-                    <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-800 flex items-center justify-center shrink-0 border border-blue-100">
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-slate-950">
-                      {article.title}
-                    </h2>
+                    <div>
+                      <span className="text-xs font-black text-blue-800 uppercase block">
+                        {article.category}
+                      </span>
+                      <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-slate-950">
+                        {article.title}
+                      </h2>
+                    </div>
                   </div>
 
-                  <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-8 bg-slate-50 p-6 rounded-2xl border-r-4 border-blue-500 font-medium">
+                  <p className="text-slate-800 text-base md:text-lg leading-relaxed mb-8 bg-amber-50/60 p-6 rounded-2xl border-r-4 border-amber-500 font-medium">
                     {article.tagline}
                   </p>
 
                   <div className="space-y-6">
-                    {article.content.map((item: any, itemIdx) => {
+                    {article.content.map((item: any, itemIdx: number) => {
                       if (item.type === "heading") {
                         return (
-                          <h3 key={itemIdx} className="text-lg md:text-xl font-black text-slate-900 mt-8 mb-4 border-r-2 border-blue-600 pr-3">
+                          <h3 key={itemIdx} className="text-lg md:text-xl font-black text-slate-950 mt-8 mb-4 border-r-4 border-blue-700 pr-3">
                             {item.text}
                           </h3>
                         );
                       }
                       if (item.type === "paragraph") {
                         return (
-                          <p key={itemIdx} className="text-slate-600 text-base md:text-lg leading-relaxed">
-                            {item.text}
+                          <div key={itemIdx} className="space-y-3">
+                            <p className="text-slate-800 text-base md:text-lg leading-relaxed">
+                              {item.text}
+                            </p>
                             {item.links && (
-                              <span className="block mt-4 flex flex-col gap-2">
+                              <div className="flex flex-col gap-2 pt-2">
                                 {item.links.map((lnk: any, lIdx: number) => (
                                   <a 
                                     key={lIdx} 
                                     href={lnk.href} 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
-                                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-500 hover:underline font-black text-sm bg-blue-50 border border-blue-100/60 px-4 py-2 rounded-xl self-start"
+                                    className="inline-flex items-center gap-2 text-blue-800 hover:text-blue-900 hover:underline font-black text-sm bg-blue-50 border border-blue-200 px-4 py-2.5 rounded-xl self-start shadow-2xs"
                                   >
                                     🔗 {lnk.label}
                                   </a>
                                 ))}
-                              </span>
+                              </div>
                             )}
-                          </p>
-                        );
-                      }
-                      if (item.type === "checklist" && item.items) {
-                        return (
-                          <div key={itemIdx} className="bg-slate-50/50 p-6 rounded-2xl border border-slate-100 my-6">
-                            <ul className="space-y-4 text-slate-600 text-base">
-                              {item.items.map((sub, subIdx) => (
-                                <li key={subIdx} className="flex items-start gap-3">
-                                  <span className="text-blue-600 font-extrabold mt-1 shrink-0">◀</span>
-                                  <span>
-                                    <strong className="text-slate-900 font-bold">{sub.bold}</strong>
-                                    {sub.text}
-                                  </span>
-                                </li>
-                              ))}
-                            </ul>
                           </div>
                         );
                       }
                       if (item.type === "conclusion") {
                         return (
-                          <div key={itemIdx} className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                            <p className="text-slate-800 font-bold text-base md:text-lg max-w-3xl leading-relaxed">
-                              {item.text}
-                            </p>
+                          <div key={itemIdx} className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 bg-slate-50 p-6 rounded-2xl">
+                            <div className="space-y-1">
+                              <span className="text-xs font-black text-blue-800 block">סיכום והנחיה ליישום:</span>
+                              <p className="text-slate-900 font-bold text-base md:text-lg max-w-3xl leading-relaxed">
+                                {item.text}
+                              </p>
+                            </div>
                             <a
                               href="tel:054-7515142"
-                              className="bg-blue-600 hover:bg-blue-500 text-white font-black px-6 py-3 rounded-xl transition-all shadow-md shadow-blue-600/20 text-center shrink-0 text-sm whitespace-nowrap self-start sm:self-center"
+                              className="bg-blue-800 hover:bg-blue-700 text-white font-black px-6 py-3 rounded-xl transition-all shadow-md text-center shrink-0 text-sm whitespace-nowrap self-start sm:self-center"
                             >
                               התייעצות מיידית: 054-7515142
                             </a>
@@ -634,33 +928,28 @@ const CourtExpertPage: React.FC = () => {
                       return null;
                     })}
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>
+
         </div>
       </section>
 
       {/* FAQs Section */}
-      <section className="py-20 bg-white border-t border-slate-100">
+      <section className="py-20 bg-white border-t border-slate-200">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-blue-600 font-extrabold text-sm tracking-wider uppercase block mb-3">שאלות נפוצות</span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight">שאלות ותשובות בנושא <br /><span className="text-blue-600">חוות דעת הנדסית לבית משפט</span></h2>
-            <p className="text-slate-500 mt-4 max-w-xl mx-auto">המידע והתקנים שיסייעו לכם להתייצב במקצועיות הנדסית מושלמת בדיונים מול קבלנים ויזמי פרויקטים</p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-black text-slate-950">שאלות ותשובות נפוצות בנושא חוות דעת לבית משפט</h2>
           </div>
-
           <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <div 
-                key={index}
-                className="bg-slate-50 p-8 rounded-3xl border border-slate-100/80 text-right"
-              >
-                <h3 className="text-lg font-black text-slate-900 mb-3 flex items-start gap-3">
-                  <span className="text-blue-600 text-xl">◀</span>
-                  {faq.q}
+            {faqs.map((faq, idx) => (
+              <div key={idx} className="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/80 space-y-3">
+                <h3 className="text-lg font-black text-slate-950 flex items-start gap-2">
+                  <span className="text-blue-700 font-black">Q:</span>
+                  <span>{faq.q}</span>
                 </h3>
-                <p className="text-slate-600 leading-relaxed text-sm pr-6 border-r border-slate-200">
+                <p className="text-slate-700 text-base leading-relaxed pr-6 border-r-2 border-blue-600">
                   {faq.a}
                 </p>
               </div>
@@ -669,6 +958,7 @@ const CourtExpertPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Contact Section */}
       <Contact />
     </div>
   );
