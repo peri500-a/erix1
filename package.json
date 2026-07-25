@@ -1,0 +1,36 @@
+{
+  "name": "erix-engineering",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0 -p 3000",
+    "build": "NODE_ENV=production next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@swc/helpers": "^0.5.21",
+    "@tailwindcss/postcss": "^4.0.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^0.446.0",
+    "motion": "^12.41.0",
+    "next": "15.2.9",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^9.0.1",
+    "tailwind-merge": "^2.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "15.1.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
