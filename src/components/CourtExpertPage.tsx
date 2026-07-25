@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 import { motion } from 'motion/react';
 import { Scale, FileText, CheckCircle2, ShieldCheck, AlertTriangle, Droplet, Layers, Eye, ShieldAlert, Phone, HelpCircle, Award } from 'lucide-react';
 import Contact from './Contact';
@@ -401,6 +402,28 @@ const CourtExpertPage: React.FC = () => {
       {/* Main Core Content Section */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-5xl mx-auto px-6">
+          
+          {/* Article Cross-Link Banner */}
+          <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white p-8 rounded-3xl shadow-xl mb-12 flex flex-col md:flex-row items-center justify-between gap-6 border border-blue-800/50">
+            <div className="space-y-2 text-right">
+              <span className="bg-blue-500/20 text-blue-300 text-xs font-black uppercase px-3 py-1 rounded-full border border-blue-400/30">
+                גישת אריקס לביקורת מבנים
+              </span>
+              <h3 className="text-xl sm:text-2xl font-black text-white">
+                למה אנחנו לא כותבים חוות דעת משפטית לפני שיש מחלוקת?
+              </h3>
+              <p className="text-slate-300 text-sm sm:text-base max-w-2xl">
+                95% מדוחות בדק הבית בישראל מנוסחים ככתב תביעה שמזיק לתיקון הליקויים. גלו מתי באמת נדרשת חוות דעת לבית משפט ומתי דוח עבודה ענייני עובד לטובתכם.
+              </p>
+            </div>
+            <Link 
+              href="/למה-דוחות-בדק-בית-מסורבלים"
+              className="bg-white text-blue-900 hover:bg-blue-50 font-black px-6 py-3 rounded-xl transition-all shadow-md shrink-0 text-sm whitespace-nowrap"
+            >
+              לקריאת המאמר המלא ◄
+            </Link>
+          </div>
+
           <div className="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200/80 shadow-sm text-right space-y-10">
             
             {/* Opening Intro */}

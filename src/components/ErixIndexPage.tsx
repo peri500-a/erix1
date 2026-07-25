@@ -508,6 +508,24 @@ export default function ErixIndexPage() {
               בניגוד לתדמית שיוצרות רשתות חברתיות ופורומים סביב &quot;ליקויי בנייה&quot; בישראל, הנתונים שלנו מראים תמונה מאוזנת יותר: כן, כמעט בכל דירה חדשה יימצאו ליקויים - זו כמעט עובדה סטטיסטית ודאית. אבל <strong className="text-blue-300">רוב הליקויים הללו קלים, זולים ומהירים לתיקון</strong> - ליקוי במשקוף דלת, כיוון הפוך של תריס, או ארון חשמל שצריך יישור, אינם אסון. חלק מחברות בדק הבית מייחסות משקל דרמטי מדי לליקויים קלים כאלה, ללא הצדקה עניינית אמיתית.
             </p>
 
+            {/* Related Article Box */}
+            <div className="bg-slate-800/90 border border-blue-500/30 p-6 rounded-2xl my-4 text-right space-y-3">
+              <div className="text-blue-400 text-xs font-bold uppercase tracking-wider">מאמר מומלץ ממאגר הידע</div>
+              <h4 className="text-xl font-bold text-white">
+                למה דוחות בדק בית בישראל כל כך מסורבלים - ולמה אנחנו לא כותבים ככה?
+              </h4>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                95% מדוחות בדק הבית מנופחים בציטוטים משפטיים שמשרתים תחושת &quot;תמורה לכסף&quot; במקום לעזור לתקן את הליקוי בפועל. קראו איך אריקס כותבת דוחות עבודה שבאמת עוזרים לכם לקבל דירה תקינה.
+              </p>
+              <Link 
+                href="/למה-דוחות-בדק-בית-מסורבלים"
+                className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-bold text-sm underline pt-1"
+              >
+                <span>לקריאת המאמר המלא</span>
+                <span>◀</span>
+              </Link>
+            </div>
+
             <p className="text-lg md:text-xl text-slate-300 leading-relaxed pt-2">
               יחד עם זאת, אי אפשר - וגם לא נכון - להתעלם מכך שבחלק מהדירות מתגלים ליקויים רבים ומטרידים במיוחד, ואף אחד לא רוצה שזו תהיה הדירה שלו. זו בדיוק הסיבה שאנשים בוחרים לבצע בדק בית גם כשהסיכוי הכולל לליקוי חמור אינו גבוה: השקט הנפשי, והידיעה המדויקת מה בדיוק מקבלים - שווים את זה.
             </p>
