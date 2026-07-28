@@ -36,7 +36,7 @@ const Testimonials: React.FC = () => {
             המלצות לקוחות
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-            אלפי לקוחות מרוצים
+            מה אומרים לקוחות <span className="text-blue-600">שחסכנו להם עשרות אלפי שקלים</span>
           </h2>
           <p className="mt-4 text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             השקט הנפשי שלכם הוא המשימה שלנו. הנה כמה סיפורים מהשטח.

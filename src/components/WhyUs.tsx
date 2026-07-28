@@ -39,6 +39,11 @@ const WhyUs: React.FC = () => {
       title: 'ליווי אישי עם המהנדס עד למסירה',
       description: 'תקבלו קשר ישיר עם המהנדס המבצע לאורך כל התהליך, זמינות מלאה לכל שאלה מקצועית, וליווי עד לרגע המסירה - לביטחון מלא בהחלטה שלכם.',
     },
+    {
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7h6m6 0l-3 1m0 0l3 9a5.002 5.002 0 00-6.001 0M18 7l-3 9m3-9h-6M6 7h12M9 3h6" /></svg>,
+      title: 'חוות דעת מומחה קבילה בבית משפט',
+      description: 'כל דוח נחתם אישית ע״י אינג׳ יוסי פרי, מהנדס בניין רשוי ורשום (מ.ר 78687) בעל 30+ שנות ניסיון. הדוח מנוסח כחוות דעת מומחה קבילה ומעניק לכם גב משפטי חזק.',
+    },
   ];
 
   return (
@@ -50,15 +55,15 @@ const WhyUs: React.FC = () => {
             הסטנדרט ההנדסי הגבוה בישראל
           </span>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-4">
-            למה לבחור <span className="text-blue-600">באריקס ביקורת מבנים?</span>
+            5 סיבות שבעלי נכסים בוחרים <span className="text-blue-600">במהנדס אישי ולא בחברה אנונימית</span>
           </h2>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed">
             אנו משלבים ידע הנדסי מעמיק עם טכנולוגיה מתקדמת כדי להעניק לכם את הביטחון המקסימלי בנכס שלכם.
           </p>
         </div>
 
-        {/* 4 Features Grid - Full Width */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12">
+        {/* 5 Features Grid - Full Width */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8 mb-12">
           {features.map((feature, index) => (
             <Feature key={index} {...feature} />
           ))}
