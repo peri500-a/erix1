@@ -85,15 +85,19 @@ const Contact: React.FC = () => {
           <div className="lg:col-span-6 order-2 lg:order-1">
             <div className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl border border-slate-100 text-slate-900">
               {status === 'success' ? (
-                <div className="text-center py-12 animate-fade-in" role="alert">
+                <div className="text-center py-12 animate-fade-in" role="alert" aria-live="polite">
                   <div className="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-100 shadow-sm">
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <h4 className="text-2xl font-black text-slate-900 mb-3">הפנייה נשלחה בהצלחה!</h4>
                   <p className="text-slate-600 text-base mb-8">תודה שפנית לאריקס ביקורת מבנים. נחזור אליך בהקדם עם כל המידע.</p>
-                  <button onClick={() => setStatus('idle')} className="text-blue-600 font-bold hover:underline text-base">
+                  <button 
+                    type="button"
+                    onClick={() => setStatus('idle')} 
+                    className="text-blue-600 font-bold hover:underline text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1"
+                  >
                     שליחת פנייה נוספת
                   </button>
                 </div>
@@ -105,16 +109,17 @@ const Contact: React.FC = () => {
                   data-netlify-honeypot="bot-field"
                   onSubmit={handleSubmit} 
                   className="space-y-5" 
+                  aria-label="טופס יצירת קשר לקבלת הצעת מחיר"
                 >
                   <input type="hidden" name="form-name" value="contact" />
-                  <p className="hidden">
-                    <label>Don’t fill this out: <input name="bot-field" onChange={handleChange} /></label>
+                  <p className="hidden" aria-hidden="true">
+                    <label htmlFor="bot-field">Don’t fill this out: <input id="bot-field" name="bot-field" onChange={handleChange} tabIndex={-1} autoComplete="off" /></label>
                   </p>
 
                   {/* Name field */}
                   <div>
                     <label htmlFor="name" className="text-xs font-bold text-slate-800 mb-1.5 block">
-                      שם מלא
+                      שם מלא <span className="text-red-500" aria-hidden="true">*</span>
                     </label>
                     <input 
                       id="name" 
@@ -123,7 +128,9 @@ const Contact: React.FC = () => {
                       value={formData.name} 
                       onChange={handleChange} 
                       required 
-                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all outline-none text-sm font-medium" 
+                      aria-required="true"
+                      autoComplete="name"
+                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all outline-none text-sm font-medium" 
                       placeholder="שמכם המלא" 
                     />
                   </div>
@@ -131,7 +138,7 @@ const Contact: React.FC = () => {
                   {/* Phone field */}
                   <div>
                     <label htmlFor="phone" className="text-xs font-bold text-slate-800 mb-1.5 block">
-                      טלפון
+                      טלפון <span className="text-red-500" aria-hidden="true">*</span>
                     </label>
                     <input 
                       id="phone" 
@@ -140,7 +147,9 @@ const Contact: React.FC = () => {
                       value={formData.phone} 
                       onChange={handleChange} 
                       required 
-                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all outline-none text-sm font-medium" 
+                      aria-required="true"
+                      autoComplete="tel"
+                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all outline-none text-sm font-medium" 
                       placeholder="מספר הטלפון שלכם" 
                     />
                   </div>
@@ -148,7 +157,7 @@ const Contact: React.FC = () => {
                   {/* Service select field */}
                   <div>
                     <label htmlFor="service" className="text-xs font-bold text-slate-800 mb-1.5 block">
-                      סוג השירות
+                      סוג השירות <span className="text-red-500" aria-hidden="true">*</span>
                     </label>
                     <div className="relative">
                       <select 
@@ -157,13 +166,14 @@ const Contact: React.FC = () => {
                         value={formData.service} 
                         onChange={handleChange} 
                         required 
-                        className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-slate-900 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all outline-none appearance-none text-sm font-medium"
+                        aria-required="true"
+                        className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-slate-900 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all outline-none appearance-none text-sm font-medium cursor-pointer"
                       >
                         <option value="" disabled>בחרו שירות...</option>
                         {services.map(s => <option key={s} value={s}>{s}</option>)}
                       </select>
                       <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
                         </svg>
                       </div>
@@ -181,9 +191,10 @@ const Contact: React.FC = () => {
                       name="email" 
                       value={formData.email} 
                       onChange={handleChange} 
+                      autoComplete="email"
                       aria-invalid={!!emailError}
                       aria-describedby={emailError ? "email-error" : undefined}
-                      className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all outline-none text-sm font-medium ${emailError ? 'border-red-400' : 'border-slate-200/90'}`} 
+                      className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-blue-500/20 transition-all outline-none text-sm font-medium ${emailError ? 'border-red-400 focus:border-red-500' : 'border-slate-200/90 focus:border-blue-500'}`} 
                       placeholder="כתובת האימייל שלכם" 
                     />
                     {emailError && <p id="email-error" className="text-red-500 text-xs mt-1.5 font-bold" role="alert">{emailError}</p>}
@@ -200,7 +211,7 @@ const Contact: React.FC = () => {
                       value={formData.message} 
                       onChange={handleChange} 
                       rows={3} 
-                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all outline-none resize-none text-sm font-medium" 
+                      className="w-full bg-slate-50 border border-slate-200/90 rounded-xl px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all outline-none resize-none text-sm font-medium" 
                       placeholder="ספרו לנו קצת על הנכס..."
                     ></textarea>
                   </div>
@@ -212,12 +223,19 @@ const Contact: React.FC = () => {
                   <button 
                     type="submit" 
                     disabled={status === 'submitting'} 
-                    className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-base py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-blue-600/30 disabled:opacity-50 focus:outline-none focus:ring-4 focus:ring-blue-300 mt-2"
+                    className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-base py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-blue-600/30 disabled:opacity-50 focus:outline-none focus:ring-4 focus:ring-blue-300 mt-2 cursor-pointer"
                   >
-                    <span className="sr-only" role="status">
-                      {status === 'submitting' ? 'מעבד פנייה...' : ''}
-                    </span>
-                    {status === 'submitting' ? 'מעבד פנייה...' : 'שלחו הצעה עבורי'}
+                    {status === 'submitting' ? (
+                      <span className="flex items-center justify-center gap-2" role="status">
+                        <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        מעבד פנייה...
+                      </span>
+                    ) : (
+                      'שלחו הצעה עבורי'
+                    )}
                   </button>
                 </form>
               )}
@@ -243,7 +261,8 @@ const Contact: React.FC = () => {
               {/* Phone Card */}
               <a 
                 href={`tel:${PHONE_NUMBER}`} 
-                className="bg-[#10192F] hover:bg-[#162342] border border-slate-800/80 rounded-2xl p-5 flex items-center justify-between transition-all duration-300 group"
+                aria-label={`התקשרו אלינו למספר ${PHONE_NUMBER}`}
+                className="bg-[#10192F] hover:bg-[#162342] border border-slate-800/80 rounded-2xl p-5 flex items-center justify-between transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-[#0B132A]"
               >
                 <div>
                   <p className="text-xs text-slate-400 font-medium mb-1">התקשרו אלינו</p>
@@ -252,7 +271,7 @@ const Contact: React.FC = () => {
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
@@ -261,7 +280,8 @@ const Contact: React.FC = () => {
               {/* Email Card */}
               <a 
                 href={`mailto:${PROFESSIONAL_EMAIL}`} 
-                className="bg-[#10192F] hover:bg-[#162342] border border-slate-800/80 rounded-2xl p-5 flex items-center justify-between transition-all duration-300 group"
+                aria-label={`שלחו אימייל לכתובת ${PROFESSIONAL_EMAIL}`}
+                className="bg-[#10192F] hover:bg-[#162342] border border-slate-800/80 rounded-2xl p-5 flex items-center justify-between transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-[#0B132A]"
               >
                 <div>
                   <p className="text-xs text-slate-400 font-medium mb-1">שלחו מייל</p>
@@ -270,7 +290,7 @@ const Contact: React.FC = () => {
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
@@ -281,7 +301,8 @@ const Contact: React.FC = () => {
                 href={whatsappLink} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="bg-[#10192F] hover:bg-[#162342] border border-slate-800/80 rounded-2xl p-5 flex items-center justify-between transition-all duration-300 group"
+                aria-label="שלחו הודעת וואטסאפ מהירה לאריקס ביקורת מבנים"
+                className="bg-[#10192F] hover:bg-[#162342] border border-slate-800/80 rounded-2xl p-5 flex items-center justify-between transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-[#0B132A]"
               >
                 <div>
                   <p className="text-xs text-slate-400 font-medium mb-1">וואטסאפ מהיר</p>
@@ -290,7 +311,7 @@ const Contact: React.FC = () => {
                   </p>
                 </div>
                 <div className="w-12 h-12 bg-emerald-500 text-white rounded-2xl flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
-                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.143c1.565.933 3.176 1.423 4.842 1.425 5.303 0 9.617-4.312 9.619-9.617.001-2.571-1.003-4.985-2.83-6.81s-4.239-2.827-6.801-2.829c-5.304 0-9.619 4.313-9.621 9.618-.001 1.738.476 3.426 1.38 4.898l-1.035 3.778 3.846-1.007zm11.303-5.004c-.312-.156-1.848-.912-2.141-1.017-.293-.104-.506-.156-.719.156-.213.312-.826 1.017-1.012 1.25-.187.234-.373.26-.686.104-.312-.156-1.316-.486-2.507-1.548-.927-.827-1.553-1.849-1.735-2.162-.182-.312-.019-.481.137-.635.141-.138.312-.364.469-.547.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.547-.078-.156-.719-1.731-.985-2.37-.259-.622-.523-.538-.719-.547l-.613-.013c-.213 0-.559.081-.852.403-.293.322-1.118 1.094-1.118 2.67s1.145 3.1 1.303 3.308c.158.208 2.254 3.441 5.459 4.823.761.329 1.355.525 1.817.671.764.243 1.459.208 2.009.127.613-.091 1.848-.755 2.11-1.485.261-.73.261-1.355.183-1.485-.077-.13-.285-.208-.597-.364z" />
                   </svg>
                 </div>
