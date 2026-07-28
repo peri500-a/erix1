@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 import SchemaTags from './SchemaTags';
 
-const FaqItem: React.FC<{ question: string; answer: string; index: number; defaultOpen?: boolean }> = ({ question, answer, index, defaultOpen = true }) => {
+const FaqItem: React.FC<{ question: string; answer: string; index: number; defaultOpen?: boolean }> = ({ question, answer, index, defaultOpen = false }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
@@ -60,6 +60,10 @@ const FaqItem: React.FC<{ question: string; answer: string; index: number; defau
 
 const FAQ: React.FC = () => {
   const faqs = [
+    {
+      question: 'מהו בדק בית ומדוע חייבים מהנדס בניין רשוי לביצוע הבדיקה?',
+      answer: 'בדק בית הינו תהליך הנדסי מקיף לבחינת תקינות המבנה, איתור ליקויי בנייה, כפוף לתקנות התכנון והבנייה, חוק המכר (דירות) והתקנים הישראליים (ת"י). ביצוע הבדיקה ע"י מהנדס בניין רשוי ורשום (כדוגמת אינג\' יוסי פרי, מ.ר 78687) מבטיח אבחון מקצועי אובייקטיבי בעזרת מכשור מתקדם (מצלמה תרמית, מד לחות, פלס לייזר). דוח המהנדס משמש כחוות דעת משפטית קבילה בבית משפט ומעניק לכם הגנה וביטחון מלא מול הקבלן או מוכר הנכס.',
+    },
     {
       question: 'האם דוח בדק הבית שלכם קביל בבית משפט ומשמש כחוות דעת מומחה?',
       answer: 'בהחלט, ובאופן מלא. כל דוח של אריקס ביקורת מבנים נערך ונחתם אישית ע״י אינג׳ יוסי פרי, מהנדס בניין רשוי ורשום (מ.ר 78687) עם מעל 30 שנות ניסיון. הדוח מנוסח כחוות דעת מומחה משפטית רשמית הקבילה לחלוטין בבתי המשפט בישראל לפי פקודת הראיות [נוסח חדש], תשל״א-1971. הדוח מפרט את הליקויים בהתאם לתקנות התכנון והבנייה, לחוק המכר (דירות) ולתקנים הישראליים הרלוונטיים (ת״י), ומגובה בתיעוד מצולם מקיף ובמדידות מכשור דיגיטלי. רמת הפירוט והסמכות ההנדסית של אינג׳ יוסי פרי מקנות לכם הגנה משפטית חזקה ומותירות לקבלן או למוכר אפס מקום לספק.',
@@ -146,12 +150,12 @@ const FAQ: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-4 md:mb-10">
           <span className="block text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">שאלות נפוצות</span>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">השאלות שכל בעל נכס <span className="text-blue-600">חייב לשאול</span></h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">ריכזנו עבורכם את כל המידע המקצועי שחשוב לדעת לפני שמזמינים בדיקת בדק בית.</p>
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">שאלות נפוצות על <span className="text-blue-600">בדק בית וביקורת מבנים</span></h2>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">ריכזנו עבורכם את כל השאלות והמידע ההנדסי הקריטי שחשוב לדעת לפני שמזמינים בדיקת בדק בית.</p>
         </div>
         <div className="max-w-4xl mx-auto bg-slate-50 p-8 md:p-16 rounded-[3rem] border border-slate-100 shadow-sm">
           {faqs.map((faq, index) => (
-            <FaqItem key={index} question={faq.question} answer={faq.answer} index={index} defaultOpen={true} />
+            <FaqItem key={index} question={faq.question} answer={faq.answer} index={index} defaultOpen={index === 0} />
           ))}
         </div>
       </div>
