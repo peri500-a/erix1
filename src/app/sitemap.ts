@@ -1,6 +1,9 @@
+import { MetadataRoute } from 'next';
 import { articles } from '../data/articles';
 
 export const dynamic = 'force-static';
+
+const baseUrl = 'https://www.homeinspection.co.il';
 
 const locationSlugs = [
   'בדק-בית-בתל-אביב',
@@ -15,48 +18,55 @@ const locationSlugs = [
   'בדק-בית-באבן-יהודה',
 ];
 
-export default function sitemap() {
-  const baseUrl = 'https://www.homeinspection.co.il';
-  
-  const mainRoutes = [
-    '',
-    '/אודות',
-    '/בדק-בית-מקבלן',
-    '/בדק-בית-יד-שנייה',
-    '/בדק-בית-לבית-פרטי-וילה',
-    '/בדק-בית-סוף-שנת-בדק',
-    '/איתור-נזילות-ורטיבות',
-    '/איתור-ליקויי-בנייה-מורכבים',
-    '/חוות-דעת-הנדסית-לבית-משפט',
-    '/בדק-בית-מחיר',
-    '/הצהרת-נגישות',
-    '/מדיניות-פרטיות',
-    '/אישור-מהנדס-לפרגולה',
-    '/איתור-חריגות-בנייה',
-    '/בדק-בית-תמא-38-פינוי-בינוי',
-    '/מדד-אריקס-נתוני-ליקויי-בניה',
-    '/ליקויי-בנייה',
-    '/מה-אנחנו-בודקים',
-    '/מאגר-הידע-ההנדסי',
-    '/sample-report',
-  ];
+const mainRoutes = [
+  '',
+  '/אודות',
+  '/בדק-בית-מקבלן',
+  '/בדק-בית-יד-שנייה',
+  '/בדק-בית-לבית-פרטי-וילה',
+  '/בדק-בית-סוף-שנת-בדק',
+  '/איתור-נזילות-ורטיבות',
+  '/איתור-ליקויי-בנייה-מורכבים',
+  '/חוות-דעת-הנדסית-לבית-משפט',
+  '/בדק-בית-מחיר',
+  '/הצהרת-נגישות',
+  '/מדיניות-פרטיות',
+  '/אישור-מהנדס-לפרגולה',
+  '/איתור-חריגות-בנייה',
+  '/בדק-בית-תמא-38-פינוי-בינוי',
+  '/מדד-אריקס-נתוני-ליקויי-בניה',
+  '/מה-אנחנו-בודקים',
+  '/מאגר-הידע-ההנדסי',
+  '/services',
+  '/sample-report',
+];
 
+export default function sitemap(): MetadataRoute.Sitemap {
   const locationRoutes = locationSlugs.map(slug => `/${slug}`);
   const articleRoutes = articles.map(article => `/${article.slug}`);
 
   const allRoutes = [...mainRoutes, ...locationRoutes, ...articleRoutes];
+  const uniqueRoutes = Array.from(new Set(allRoutes));
 
-  // Map to unique routes and format for sitemap
-  return Array.from(new Set(allRoutes)).map((route) => {
-    // For Hebrew URLs in sitemap, it's safer to encode them
-    const segments = route.split('/').map(segment => encodeURIComponent(segment));
-    const encodedRoute = segments.join('/');
-    
+  return uniqueRoutes.map((route) => {
+    // Safely encode URI paths for Hebrew characters
+    const encodedPath = route
+      .split('/')
+      .map(segment => encodeURIComponent(segment))
+      .join('/');
+
+    const isHome = route === '';
+    const isPrimaryServiceOrLocation =
+      route.includes('בדק-בית') ||
+      route.includes('איתור') ||
+      route.includes('חוות-דעת');
+
     return {
-      url: `${baseUrl}${encodedRoute}`,
+      url: `${baseUrl}${encodedPath}`,
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: route === '' ? 1 : (route.includes('inspection') || route.includes('בדק-בית') ? 0.9 : 0.7),
+      changeFrequency: isHome ? 'weekly' : isPrimaryServiceOrLocation ? 'weekly' : 'monthly',
+      priority: isHome ? 1.0 : isPrimaryServiceOrLocation ? 0.9 : 0.7,
     };
   });
 }
+
