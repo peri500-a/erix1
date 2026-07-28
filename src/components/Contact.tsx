@@ -71,6 +71,7 @@ const Contact: React.FC = () => {
     'בדיקת דירה חדשה מקבלן',
     'איתור ליקויי בניה ורטיבות',
     'ליווי ופיקוח בבנייה',
+    'חוות דעת הנדסית לבית משפט',
   ];
 
   const whatsappLink = `https://wa.me/972${PHONE_NUMBER.substring(1).replace('-', '')}?text=${encodeURIComponent('היי, אשמח לקבל הצעת מחיר לבדק בית')}`;
