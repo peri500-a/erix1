@@ -1,164 +1,111 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
-
-const getInitials = (name: string) => {
-  const parts = name.trim().split(' ');
-  if (parts.length >= 2) {
-    return parts[0][0] + parts[1][0];
-  }
-  return name.slice(0, 2);
-};
-
-const getAvatarStyle = (name: string) => {
-  if (name.includes('אבידן')) {
-    return 'bg-blue-50 text-blue-700 border-blue-200';
-  }
-  if (name.includes('תומר')) {
-    return 'bg-emerald-50 text-emerald-700 border-emerald-200';
-  }
-  return 'bg-purple-50 text-purple-700 border-purple-200';
-};
-
-const TestimonialCard: React.FC<{ quote: string; name: string; city: string; isActive: boolean }> = ({ quote, name, city, isActive }) => (
-  <div className={`w-full shrink-0 px-4 transition-all duration-1000 ease-in-out ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none absolute'}`}>
-    <div className="prestige-card p-10 md:p-16 flex flex-col items-center text-center group bg-white border-0 shadow-2xl relative">
-      {/* Dynamic Profile Avatar Badge with Initials */}
-      <div className="mb-6 relative">
-        <div className={`w-20 h-20 rounded-full border-2 flex items-center justify-center font-black text-2xl shadow-sm tracking-tight transition-transform duration-500 group-hover:scale-105 ${getAvatarStyle(name)}`}>
-          {getInitials(name)}
-        </div>
-        <div className="absolute -bottom-1 -right-1 bg-blue-600 text-white rounded-full w-7 h-7 flex items-center justify-center border-2 border-white shadow-md">
-          <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H17.017C15.3561 14 14.017 12.6609 14.017 11V7H20.017V14L20.017 21H14.017ZM4.017 21L4.017 18C4.017 16.8954 4.91243 16 6.017 16H9.017V14H7.017C5.35614 14 4.017 12.6609 4.017 11V7H10.017V14L10.017 21H4.017Z" />
-          </svg>
-        </div>
-      </div>
-
-      <div className="flex gap-1.5 mb-6 justify-center">
-        {[...Array(5)].map((_, i) => (
-          <svg key={i} className="w-5.5 h-5.5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        ))}
-      </div>
-
-      <p className="text-slate-800 italic mb-8 leading-relaxed text-xl md:text-2xl font-medium max-w-3xl">
-        &quot;{quote}&quot;
-      </p>
-      
-      <div className="pt-6 border-t border-slate-100 w-full max-w-sm mx-auto">
-        <div className="font-black text-slate-900 text-xl mb-1 flex items-center justify-center gap-1.5">
-          <span>{name}</span>
-          <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full text-[10px] font-bold">
-            ✓ לקוח מאומת
-          </span>
-        </div>
-        <div className="text-blue-600 font-black text-xs uppercase tracking-[0.2em]">{city}</div>
-      </div>
-    </div>
-  </div>
-);
+import React from 'react';
 
 const Testimonials: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
   const testimonials = [
     {
-      quote: 'הגענו דרך המלצה ולא התאכזבנו. הדוח המפורט חשף ליקויים שהקבלן "שכח" לציין. בזכותם נכנסנו לדירה מושלמת וחסכנו עשרות אלפי שקלים.',
-      name: 'משפחת אבידן',
-      city: 'רעננה',
+      quote: 'שירות יוצא מן הכלל. מהשיחה הראשונה ועד קבלת הדוח הרגשנו שיש על מי לסמוך. הדוח היה ברור ומקצועי, ועזר לנו מאוד במשא ומתן.',
+      name: 'סיגל כהן',
+      city: 'ראשון לציון',
+      initial: 'ס',
+      tag: 'לקוח מאומת'
     },
     {
       quote: 'חשבנו שהבית שמצאנו מושלם, אבל הבדיקה גילתה בעיות איטום רציניות בגג. המהנדס היה יסודי והסביר הכל בסבלנות. מנעתם מאיתנו אסון כלכלי.',
       name: 'תומר ושירי',
       city: 'באר שבע',
+      initial: 'ת',
+      tag: 'לקוח מאומת'
     },
     {
-      quote: 'שירות יוצא מן הכלל. מהשיחה הראשונה ועד קבלת הדוח הרגשנו שיש על מי לסמוך. הדוח היה ברור ומקצועי, ועזר לנו מאוד במשא ומתן.',
-      name: 'סיגל כהן',
-      city: 'ראשון לציון',
+      quote: 'הגענו דרך המלצה ולא התאכזבנו. הדוח המפורט חשף ליקויים שהקבלן שכח לציין. בזכותם נכנסנו לדירה מושלמת וחסכנו עשרות אלפי שקלים.',
+      name: 'משפחת אבידן',
+      city: 'רעננה',
+      initial: 'מ',
+      tag: 'לקוח מאומת'
     }
   ];
 
-  const nextSlide = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % testimonials.length);
-  }, [testimonials.length]);
-
-  const prevSlide = () => {
-    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
-  useEffect(() => {
-    if (!isPaused) {
-      const interval = setInterval(nextSlide, 6000);
-      return () => clearInterval(interval);
-    }
-  }, [isPaused, nextSlide]);
-
   return (
-    <section id="testimonials" className="py-6 md:py-12 bg-white scroll-mt-24 overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-4 md:mb-8">
-          <span className="block text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">אלפי לקוחות מרוצים</span>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight">המלצות <span className="text-blue-600">לקוחות</span></h2>
-          <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">השקט הנפשי שלכם הוא המשימה שלנו. הנה כמה סיפורים מהשטח.</p>
+    <section id="testimonials" className="py-16 md:py-24 bg-slate-50/60 scroll-mt-24">
+      <div className="container mx-auto px-6 max-w-7xl">
+        {/* Header Section */}
+        <div className="text-center mb-12 md:mb-16">
+          <span className="text-blue-600 font-bold text-sm md:text-base tracking-wide block mb-2">
+            המלצות לקוחות
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
+            אלפי לקוחות מרוצים
+          </h2>
+          <p className="mt-4 text-slate-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+            השקט הנפשי שלכם הוא המשימה שלנו. הנה כמה סיפורים מהשטח.
+          </p>
         </div>
 
-        {/* Carousel Container */}
-        <div 
-          className="relative max-w-4xl mx-auto mb-20"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <div className="relative h-[600px] sm:h-[500px] flex items-center">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard 
-                key={index} 
-                {...testimonial} 
-                isActive={index === activeIndex} 
-              />
-            ))}
-          </div>
-
-          {/* Navigation Controls */}
-          <div className="absolute top-1/2 -translate-y-1/2 -left-4 sm:-left-12 z-20">
-            <button 
-              onClick={prevSlide}
-              className="p-4 rounded-full bg-white border border-slate-100 text-slate-400 hover:text-blue-600 hover:border-blue-100 transition-all shadow-lg group"
-              aria-label="Previous"
+        {/* 3-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {testimonials.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-3xl p-8 border border-slate-100 shadow-xl shadow-slate-200/40 flex flex-col justify-between relative group hover:-translate-y-1 transition-all duration-300"
             >
-              <svg className="w-6 h-6 transform rotate-180 group-active:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-          <div className="absolute top-1/2 -translate-y-1/2 -right-4 sm:-right-12 z-20">
-            <button 
-              onClick={nextSlide}
-              className="p-4 rounded-full bg-white border border-slate-100 text-slate-400 hover:text-blue-600 hover:border-blue-100 transition-all shadow-lg group"
-              aria-label="Next"
-            >
-              <svg className="w-6 h-6 group-active:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+              {/* Quote Mark Icon */}
+              <div className="absolute top-6 left-6 text-blue-200 opacity-80 pointer-events-none">
+                <svg className="w-10 h-10 fill-current" viewBox="0 0 24 24">
+                  <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H17.017C15.3561 14 14.017 12.6609 14.017 11V7H20.017V14L20.017 21H14.017ZM4.017 21L4.017 18C4.017 16.8954 4.91243 16 6.017 16H9.017V14H7.017C5.35614 14 4.017 12.6609 4.017 11V7H10.017V14L10.017 21H4.017Z" />
+                </svg>
+              </div>
 
-          {/* Indicators */}
-          <div className="flex justify-center gap-1 mt-8">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className="w-12 h-12 flex items-center justify-center transition-all duration-300 focus:outline-none group"
-                aria-label={`Go to testimonial ${index + 1}`}
-              >
-                <div className={`h-2 transition-all duration-500 rounded-full ${index === activeIndex ? 'w-12 bg-blue-600' : 'w-2 bg-slate-200 group-hover:bg-slate-300'}`} />
-              </button>
-            ))}
-          </div>
+              <div className="mb-6 pt-2">
+                {/* Review Quote */}
+                <p className="text-slate-700 text-sm md:text-base leading-relaxed font-medium mb-6">
+                  &quot;{item.quote}&quot;
+                </p>
+
+                {/* Star Rating */}
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-amber-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <hr className="border-slate-100 mb-5" />
+
+                <div className="flex items-center justify-between">
+                  {/* Verified Customer Badge */}
+                  <span className="inline-flex items-center bg-emerald-50 text-emerald-600 font-bold text-xs px-3 py-1.5 rounded-full">
+                    {item.tag}
+                  </span>
+
+                  {/* Customer Info */}
+                  <div className="flex items-center gap-3 dir-rtl">
+                    <div className="text-right">
+                      <p className="font-bold text-slate-900 text-sm md:text-base leading-tight">
+                        {item.name}
+                      </p>
+                      <p className="text-xs text-slate-400 flex items-center justify-end gap-1 mt-0.5">
+                        <svg className="w-3 h-3 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span>{item.city}</span>
+                      </p>
+                    </div>
+
+                    {/* Blue Avatar Circle */}
+                    <div className="w-10 h-10 bg-blue-600 text-white font-bold text-base rounded-full flex items-center justify-center shrink-0 shadow-sm">
+                      {item.initial}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
