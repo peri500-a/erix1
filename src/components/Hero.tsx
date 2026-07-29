@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CheckCircle, FileText, PhoneCall, Phone } from 'lucide-react';
+import { CheckCircle, FileText, Phone } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [phone, setPhone] = React.useState('');
@@ -109,9 +109,6 @@ const Hero: React.FC = () => {
 
             {/* Quick Conversion Widget (Primary Focused CTA) */}
             <div className="bg-white border border-blue-100/80 p-6 rounded-3xl shadow-xl max-w-xl relative">
-              <div className="absolute -top-3 right-6 bg-blue-600 text-white p-2 rounded-full shadow-md flex items-center justify-center">
-                <PhoneCall className="w-4 h-4 text-white" />
-              </div>
               {status === 'success' ? (
                 <div className="text-right text-emerald-700 font-black flex items-center gap-2 py-2">
                   <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0" />
