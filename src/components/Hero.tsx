@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CheckCircle, FileText } from 'lucide-react';
+import { CheckCircle, FileText, PhoneCall, Phone } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [phone, setPhone] = React.useState('');
@@ -109,8 +109,8 @@ const Hero: React.FC = () => {
 
             {/* Quick Conversion Widget (Primary Focused CTA) */}
             <div className="bg-white border border-blue-100/80 p-6 rounded-3xl shadow-xl max-w-xl relative">
-              <div className="absolute -top-3 right-6 bg-blue-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
-                שיחת ייעוץ חינם ללא התחייבות
+              <div className="absolute -top-3 right-6 bg-blue-600 text-white p-2 rounded-full shadow-md flex items-center justify-center">
+                <PhoneCall className="w-4 h-4 text-white" />
               </div>
               {status === 'success' ? (
                 <div className="text-right text-emerald-700 font-black flex items-center gap-2 py-2">
@@ -133,8 +133,9 @@ const Hero: React.FC = () => {
                     <label>Don’t fill this out: <input name="bot-field" value={botField} onChange={(e) => setBotField(e.target.value)} /></label>
                   </p>
 
-                  <div className="text-sm font-black text-slate-800 mb-1 mt-1">
-                    השאירו מספר טלפון ומהנדס יחזור אליכם בדקות הקרובות:
+                  <div className="text-sm font-black text-slate-800 mb-1 mt-1 flex items-center gap-2">
+                    <Phone className="w-4 h-4 text-blue-600 shrink-0" />
+                    <span>השאירו מספר טלפון ומהנדס יחזור אליכם בדקות הקרובות:</span>
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-3">
