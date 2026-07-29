@@ -8,6 +8,7 @@ import { CheckCircle, FileText } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [phone, setPhone] = React.useState('');
+  const [selectedService, setSelectedService] = React.useState('בדיקה לפני רכישה');
   const [botField, setBotField] = React.useState('');
   const [status, setStatus] = React.useState<'idle' | 'submitting' | 'success'>('idle');
 
@@ -23,7 +24,7 @@ const Hero: React.FC = () => {
           "form-name": "quick-callback",
           "phone": phone,
           "name": "פנייה מהירה מההרו",
-          "service": "ייעוץ ראשוני מהיר",
+          "service": selectedService || "בדיקה לפני רכישה",
           "bot-field": botField
         }).toString()
       });
@@ -123,11 +124,11 @@ const Hero: React.FC = () => {
                   data-netlify="true"
                   data-netlify-honeypot="bot-field"
                   onSubmit={handleQuickSubmit} 
-                  className="space-y-3"
+                  className="space-y-3.5"
                 >
                   <input type="hidden" name="form-name" value="quick-callback" />
                   <input type="hidden" name="name" value="פנייה מהירה מההרו" />
-                  <input type="hidden" name="service" value="ייעוץ ראשוני מהיר" />
+                  <input type="hidden" name="service" value={selectedService} />
                   <p className="hidden">
                     <label>Don’t fill this out: <input name="bot-field" value={botField} onChange={(e) => setBotField(e.target.value)} /></label>
                   </p>
@@ -135,6 +136,7 @@ const Hero: React.FC = () => {
                   <div className="text-sm font-black text-slate-800 mb-1 mt-1">
                     השאירו מספר טלפון ומהנדס יחזור אליכם בדקות הקרובות:
                   </div>
+
                   <div className="flex flex-col sm:flex-row gap-3">
                     <input 
                       type="tel" 
@@ -153,6 +155,57 @@ const Hero: React.FC = () => {
                     >
                       {status === 'submitting' ? 'שולח...' : 'ייעוץ חינם עכשיו'}
                     </button>
+                  </div>
+
+                  {/* Service Type Selection & 1-Click Quick Choice */}
+                  <div className="pt-2 border-t border-slate-100 space-y-2">
+                    <div className="flex items-center justify-between text-xs font-bold text-slate-700">
+                      <span>בחירה מהירה בלחיצה אחת של סוג השירות:</span>
+                    </div>
+
+                    {/* Quick 1-Click Chips */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {[
+                        { label: 'בדיקה לפני רכישה', full: 'בדיקה לפני רכישה (בדק בית יד שנייה)' },
+                        { label: 'דירה חדשה מקבלן', full: 'בדיקת דירה חדשה מקבלן' },
+                        { label: 'איתור ליקויים ורטיבות', full: 'איתור ליקויי בניה ורטיבות' },
+                        { label: 'חוות דעת לבית משפט', full: 'חוות דעת הנדסית לבית משפט' },
+                        { label: 'ליווי ופיקוח בנייה', full: 'ליווי ופיקוח בבנייה' }
+                      ].map((srv) => {
+                        const isSelected = selectedService === srv.full;
+                        return (
+                          <button
+                            key={srv.label}
+                            type="button"
+                            onClick={() => setSelectedService(srv.full)}
+                            className={`text-xs font-bold px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
+                              isSelected
+                                ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                                : 'bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 border-slate-200'
+                            }`}
+                          >
+                            {srv.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Dropdown Select option matching user design */}
+                    <div className="pt-1">
+                      <select
+                        name="service-dropdown"
+                        value={selectedService}
+                        onChange={(e) => setSelectedService(e.target.value)}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 text-xs font-bold focus:bg-white focus:border-blue-500 transition-all outline-none text-right cursor-pointer"
+                        dir="rtl"
+                      >
+                        <option value="בדיקה לפני רכישה (בדק בית יד שנייה)">בדיקה לפני רכישה (בדק בית יד שנייה)</option>
+                        <option value="בדיקת דירה חדשה מקבלן">בדיקת דירה חדשה מקבלן</option>
+                        <option value="איתור ליקויי בניה ורטיבות">איתור ליקויי בניה ורטיבות</option>
+                        <option value="ליווי ופיקוח בבנייה">ליווי ופיקוח בבנייה</option>
+                        <option value="חוות דעת הנדסית לבית משפט">חוות דעת הנדסית לבית משפט</option>
+                      </select>
+                    </div>
                   </div>
                 </form>
               )}
