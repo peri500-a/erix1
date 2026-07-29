@@ -63,7 +63,7 @@ const SecondHandInspectionPage: React.FC = () => {
         
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-right">
           <div className="max-w-4xl">
-            <Breadcrumbs items={[{ label: 'שירותים', href: '/' }, { label: 'ביקורת דירה יד שנייה לפני קנייה' }]} />
+            <Breadcrumbs items={[{ label: 'שירותים', href: '/' }, { label: 'בדק בית לדירה יד שנייה' }]} />
             
             <span className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-xs font-black tracking-widest mb-6 uppercase mt-4">
               <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
@@ -71,11 +71,11 @@ const SecondHandInspectionPage: React.FC = () => {
             </span>
 
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-              ביקורת דירה יד שנייה לפני קנייה
+              בדק בית לדירה יד שנייה
             </h1>
             
             <h2 className="text-xl md:text-2xl font-bold text-blue-300 mb-3">
-              מתי בדיוק כדאי להזמין את הבדיקה - לפני או אחרי חתימה על חוזה?
+              מתי צריך להזמין בדק בית לדירה יד שנייה
             </h2>
 
             <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-8 max-w-3xl">

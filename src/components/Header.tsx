@@ -13,18 +13,18 @@ const Header: React.FC = () => {
   const router = useRouter();
 
   const navLinks = [
-    { href: '/', label: 'ראשי' },
-    { href: '/חוות-דעת-הנדסית-לבית-משפט', label: 'חוות דעת הנדסית לבית משפט' },
     { 
-      label: 'מה אנחנו בודקים',
+      href: '/',
+      label: 'ראשי',
       isDropdown: true,
       items: [
         { href: '/מה-אנחנו-בודקים', label: 'מה אנחנו בודקים' },
         { href: '/מדד-אריקס-נתוני-ליקויי-בניה', label: 'מדד אריקס 2026' },
-        { href: '/מאגר-הידע-ההנדסי', label: 'מאגר הידע ההנדסי' },
         { href: '/בדק-בית-מחיר', label: 'בדק בית מחיר' }
       ]
     },
+    { href: '/מאגר-הידע-ההנדסי', label: 'מאגר הידע ההנדסי' },
+    { href: '/חוות-דעת-הנדסית-לבית-משפט', label: 'חוות דעת הנדסית לבית משפט' },
     { 
       label: 'שירותים נבחרים', 
       isDropdown: true,
@@ -48,7 +48,9 @@ const Header: React.FC = () => {
             { href: '/בדק-בית-בתל-אביב', label: 'בדק בית בתל אביב' },
             { href: '/בדק-בית-בירושלים', label: 'בדק בית בירושלים' },
             { href: '/בדק-בית-ברעננה', label: 'בדק בית ברעננה' },
-            { href: '/בדק-בית-בהרצליה', label: 'בדק בית בהרצליה' }
+            { href: '/בדק-בית-בהרצליה', label: 'בדק בית בהרצליה' },
+            { href: '/בדק-בית-בתל-מונד', label: 'בדק בית בתל מונד' },
+            { href: '/בדק-בית-באבן-יהודה', label: 'בדק בית באבן יהודה' }
           ]
         }
       ]
@@ -126,14 +128,25 @@ const Header: React.FC = () => {
                 <div key={idx} className="relative group py-2">
                   {link.isDropdown ? (
                     <>
-                      <button 
-                        className="flex items-center gap-1.5 text-slate-600 hover:text-blue-600 font-bold transition-all duration-300 focus:text-blue-600 focus:outline-none"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        {link.label}
-                        <svg className="w-4 h-4 transition-transform duration-500 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                      </button>
+                      {link.href ? (
+                        <Link 
+                          href={link.href}
+                          onClick={(e) => handleLinkClick(e, link.href)}
+                          className="flex items-center gap-1.5 text-slate-600 hover:text-blue-600 font-bold transition-all duration-300 focus:text-blue-600 focus:outline-none"
+                        >
+                          {link.label}
+                          <svg className="w-4 h-4 transition-transform duration-500 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                        </Link>
+                      ) : (
+                        <button 
+                          className="flex items-center gap-1.5 text-slate-600 hover:text-blue-600 font-bold transition-all duration-300 focus:text-blue-600 focus:outline-none"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          {link.label}
+                          <svg className="w-4 h-4 transition-transform duration-500 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                        </button>
+                      )}
                       <div className={`absolute top-[calc(100%-8px)] right-0 ${link.isMultiColumn ? 'w-[540px]' : 'w-80'} pt-4 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 z-50`}>
                         <div className="bg-white border border-slate-100 rounded-2xl shadow-2xl p-4 overflow-hidden">
                           {link.isMultiColumn ? (
@@ -255,7 +268,17 @@ const Header: React.FC = () => {
               <div key={idx} className="group">
                 {link.isDropdown ? (
                   <div className="space-y-4">
-                    <span className="block text-slate-400 text-xs font-black uppercase tracking-widest">{link.label}</span>
+                    {link.href ? (
+                      <Link 
+                        href={link.href}
+                        onClick={(e) => handleLinkClick(e, link.href)}
+                        className="block text-slate-900 text-xl font-black hover:text-blue-600 transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <span className="block text-slate-400 text-xs font-black uppercase tracking-widest">{link.label}</span>
+                    )}
                     {link.isMultiColumn ? (
                       <div className="space-y-6 pr-4 border-r-2 border-slate-100">
                         {link.sections?.map((section, sIdx) => (
