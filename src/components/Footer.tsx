@@ -52,8 +52,8 @@ const Footer: React.FC = () => {
 
           {/* Column 2: Popular Services (SEO) */}
           <div className="text-right">
-            <h4 className="text-base font-black mb-6 text-white pb-2 border-b border-slate-800 inline-block">שירותי בדק בית מובילים</h4>
-            <nav className="flex flex-col gap-3 text-slate-400 font-bold text-sm">
+            <h3 className="text-base font-black mb-6 text-white pb-2 border-b border-slate-800 inline-block">שירותי בדק בית מובילים</h3>
+            <nav className="flex flex-col gap-3 text-slate-300 font-bold text-sm">
               <Link href="/בדק-בית-מקבלן" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
                 <span className="group-hover:translate-x-[-2px] transition-transform">בדק בית מקבלן (דירה חדשה)</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
@@ -87,8 +87,8 @@ const Footer: React.FC = () => {
 
           {/* Column 3: Quick Navigation */}
           <div className="text-right">
-            <h4 className="text-base font-black mb-6 text-white pb-2 border-b border-slate-800 inline-block">ניווט מהיר</h4>
-            <nav className="flex flex-col gap-3 text-slate-400 font-bold text-sm">
+            <h3 className="text-base font-black mb-6 text-white pb-2 border-b border-slate-800 inline-block">ניווט מהיר</h3>
+            <nav className="flex flex-col gap-3 text-slate-300 font-bold text-sm">
               <Link href="/" className="flex items-center gap-1.5 justify-end hover:text-white transition-colors group">
                 <span className="group-hover:translate-x-[-2px] transition-transform">דף הבית</span>
                 <ChevronRight className="w-3.5 h-3.5 text-blue-500" />
@@ -118,8 +118,8 @@ const Footer: React.FC = () => {
 
           {/* Column 4: Service Areas */}
           <div className="text-right">
-            <h4 className="text-base font-black mb-6 text-white pb-2 border-b border-slate-800 inline-block">אזורי שירות פופולריים</h4>
-            <nav className="grid grid-cols-2 gap-x-4 gap-y-3 text-slate-400 font-bold text-sm">
+            <h3 className="text-base font-black mb-6 text-white pb-2 border-b border-slate-800 inline-block">אזורי שירות פופולריים</h3>
+            <nav className="grid grid-cols-2 gap-x-4 gap-y-3 text-slate-300 font-bold text-sm">
               <Link href="/בדק-בית-בתל-אביב" className="hover:text-white transition-colors text-right">תל אביב</Link>
               <Link href="/בדק-בית-בירושלים" className="hover:text-white transition-colors text-right">ירושלים</Link>
               <Link href="/בדק-בית-ברעננה" className="hover:text-white transition-colors text-right">רעננה</Link>
@@ -132,7 +132,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row-reverse justify-between items-center gap-6 text-slate-500 text-xs font-bold">
+        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row-reverse justify-between items-center gap-6 text-slate-300 text-xs font-bold">
           <p className="text-center md:text-right">© {new Date().getFullYear()} אריקס ביקורת מבנים. כל הזכויות שמורות למשרד מהנדסים וביקורת מבנים.</p>
           <div className="flex gap-6">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">מדיניות פרטיות</Link>

@@ -44,7 +44,7 @@ const TrustBadges: React.FC = () => {
               <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-6 border border-blue-100 shadow-md transition-colors">
                 {badge.icon}
               </div>
-              <h4 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-2">{badge.name}</h4>
+              <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest mb-2">{badge.name}</h3>
               <p className="text-[11px] text-slate-500 max-w-xs">{badge.description}</p>
             </motion.div>
           ))}

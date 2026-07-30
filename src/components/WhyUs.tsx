@@ -72,7 +72,7 @@ const WhyUs: React.FC = () => {
         {/* Highlight Banner */}
         <div className="bg-blue-600 text-white rounded-3xl p-8 md:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-right">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 bg-blue-500/60 px-3.5 py-1 rounded-full text-xs font-bold text-blue-100 mb-1">
+            <div className="inline-flex items-center gap-2 bg-blue-900/90 border border-blue-400/30 px-3.5 py-1 rounded-full text-xs font-bold text-white mb-1 shadow-sm">
               <span className="h-2 w-2 bg-emerald-400 rounded-full animate-ping"></span>
               דרישת חובה לרוכשים
             </div>

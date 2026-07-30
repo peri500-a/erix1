@@ -97,7 +97,7 @@ const Testimonials: React.FC = () => {
 
                 <div className="flex items-center justify-between">
                   {/* Verified Customer Badge */}
-                  <span className="inline-flex items-center bg-emerald-50 text-emerald-600 font-bold text-xs px-3 py-1.5 rounded-full">
+                  <span className="inline-flex items-center bg-emerald-100 text-emerald-900 border border-emerald-300/80 font-bold text-xs px-3 py-1.5 rounded-full">
                     {item.tag}
                   </span>
 
@@ -107,7 +107,7 @@ const Testimonials: React.FC = () => {
                       <p className="font-bold text-slate-900 text-sm md:text-base leading-tight">
                         {item.name}
                       </p>
-                      <p className="text-xs text-slate-400 flex items-center justify-end gap-1 mt-0.5">
+                      <p className="text-xs text-slate-600 font-semibold flex items-center justify-end gap-1 mt-0.5">
                         <svg className="w-3 h-3 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />

@@ -190,8 +190,11 @@ const Hero: React.FC = () => {
 
                     {/* Dropdown Select option matching user design */}
                     <div className="pt-1">
+                      <label htmlFor="hero-service-select" className="sr-only">בחירת סוג שירות בדק בית</label>
                       <select
+                        id="hero-service-select"
                         name="service-dropdown"
+                        aria-label="בחירת סוג שירות בדק בית"
                         value={selectedService}
                         onChange={(e) => setSelectedService(e.target.value)}
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 text-xs font-bold focus:bg-white focus:border-blue-500 transition-all outline-none text-right cursor-pointer"
